@@ -14,12 +14,10 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
       <categories>
-        <category>分类1</category>
-        <category>分类2</category>
+        <category>hexo</category>
       </categories>
       <tags>
-        <tag>标签1</tag>
-        <tag>标签2</tag>
+        <tag>起步</tag>
       </tags>
   </entry>
 </search>
