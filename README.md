@@ -1,2 +1,2 @@
 # sunboyZgz.github.io
-# the author is so lazy!
+# blog 内容请勿随意转载
