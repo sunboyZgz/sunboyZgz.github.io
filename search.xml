@@ -1,6 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>/2021/04/30/combine-tailwind2/</url>
+    <content><![CDATA[<pre><code>title: create-react-app项目结合tailwindcss2.x
+date: 2021-04-30 17:30:00
+categories: 
+    - 学习
+tags: 
+    - 配置
+cover: https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/pictureForBlog/acg%2Cgy_46.jpg</code></pre>
+<h2 id="在create-react-app-版本为4-0-3-结合tailwindcss2"><a href="#在create-react-app-版本为4-0-3-结合tailwindcss2" class="headerlink" title="在create-react-app 版本为4.0.3 结合tailwindcss2"></a>在create-react-app 版本为4.0.3 结合tailwindcss2</h2><h4 id="注意：本人测试时create-react-app-版本为4-0-3-在往后的版本中，对于postcss8可能已经支持"><a href="#注意：本人测试时create-react-app-版本为4-0-3-在往后的版本中，对于postcss8可能已经支持" class="headerlink" title="注意：本人测试时create-react-app 版本为4.0.3,在往后的版本中，对于postcss8可能已经支持"></a>注意：本人测试时create-react-app 版本为4.0.3,在往后的版本中，对于postcss8可能已经支持</h4><p>最近在准备与其他同学接手一个简单的开源项目，其中需要在项目中增加一个昼夜主题切换的功能</p>
+<p>这时我想到了两套方案：</p>
+<ul>
+<li>两套css</li>
+<li>更换 css 变量值</li>
+</ul>
+<p>但是作为一个css功力并不是难么强的前端工程师，这使得我无比头疼，因此我决定采用一个css库，在四处转悠之后发现tailwindcss具有对昼夜更换功能的支持，因此我决定在项目中进行整合</p>
+<p>按照官方所述，我进行了如下操作：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install -D tailwindcss@latest postcss@latest autoprefixer@latest</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// postcss.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  plugins: &#123;</span><br><span class="line">    tailwindcss: &#123;&#125;,</span><br><span class="line">    autoprefixer: &#123;&#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npx tailwindcss init</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// tailwind.config.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  purge: [],</span><br><span class="line">  darkMode: <span class="literal">false</span>, <span class="comment">// or &#x27;media&#x27; or &#x27;class&#x27;</span></span><br><span class="line">  theme: &#123;</span><br><span class="line">    extend: &#123;&#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  variants: &#123;&#125;,</span><br><span class="line">  plugins: [],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>然后在命令行输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm run start</span><br></pre></td></tr></table></figure>
+
+
+<p>果不其然整合出了问题，具体报错</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Error: PostCSS plugin tailwindcss requires PostCSS 8.</span><br></pre></td></tr></table></figure>
+
+
+<p>ok，针对CRA项目中的 PostCSS plugin tailwindcss requires PostCSS 8，我们可以进行问题的解决，如果是其他报错，本解决方案可能并不适用</p>
+<p>首先，分析问题，npm run start 是对react-scripts 中 start.js的调用，采用的配置环境也是该<code>node_module/react-scripts/config</code>下的webpack.config.js。因此之后我们需要对此文件进行修改,</p>
+<p>简单阅读<code>start.js-&gt;env.js-&gt;paths.js</code>的源码我们可以发现，工作目录的根目录，为了方便文件的修改我使用</p>
+<p><code>npm run eject</code>弹出了配置相关内容</p>
+<p>逛了一遍github，我终于找到了目前可行的方案，至于在之后项目进行开发的过程中能否有效还不清楚</p>
+<h5 id="修改webpack-config-js-package-json"><a href="#修改webpack-config-js-package-json" class="headerlink" title="修改webpack.config.js , package.json"></a>修改webpack.config.js , package.json</h5><p><a href="https://github.com/facebook/create-react-app/pull/10003/files">原文链接：https://github.com/facebook/create-react-app/pull/10003/files</a></p>
+<p>修改完成执行<code>yarn install </code>因为create-react-app默认使用yarn工具</p>
+<p>如果你切换为npm,请执行 <code>npm install</code></p>
+<p>注意虽然webpack.config.js在<code>&#123;$project-root&#125;/config</code>目录下但是我们的 <code>postcss.config.js</code>因该放在<code>&#123;$project-root&#125;</code>目录下</p>
+<p>ok,在项目中加入 tailwindcss utility class name并执行npm run start进行测试</p>
+<p><img src="https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/combine-tailwind/Snipaste_2021-04-30_18-00-47.png"></p>
+<p>功能实现</p>
+]]></content>
+  </entry>
+  <entry>
     <title>起步-snabbdom</title>
     <url>/2021/02/01/hello-snabbdom/</url>
     <content><![CDATA[<h2 id="听说vue的virtualDOM部分的设计有借鉴snabbdom-正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整"><a href="#听说vue的virtualDOM部分的设计有借鉴snabbdom-正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整" class="headerlink" title="听说vue的virtualDOM部分的设计有借鉴snabbdom?正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整"></a>听说vue的virtualDOM部分的设计有借鉴snabbdom?正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整</h2><h4 id="一-全局走向分析"><a href="#一-全局走向分析" class="headerlink" title="一. 全局走向分析"></a>一. 全局走向分析</h4><h5 id="1-首先打开npm下载到本地的snabbdom包，分析文件目录"><a href="#1-首先打开npm下载到本地的snabbdom包，分析文件目录" class="headerlink" title="1.首先打开npm下载到本地的snabbdom包，分析文件目录"></a>1.首先打开npm下载到本地的snabbdom包，分析文件目录</h5><p>-src</p>
