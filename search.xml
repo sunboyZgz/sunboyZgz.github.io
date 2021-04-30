@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title></title>
+    <title>CRA-combine-tailwind2</title>
     <url>/2021/04/30/combine-tailwind2/</url>
-    <content><![CDATA[<pre><code>title: create-react-app项目结合tailwindcss2.x
-date: 2021-04-30 17:30:00
-categories: 
-    - 学习
-tags: 
-    - 配置
-cover: https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/pictureForBlog/acg%2Cgy_46.jpg</code></pre>
-<h2 id="在create-react-app-版本为4-0-3-结合tailwindcss2"><a href="#在create-react-app-版本为4-0-3-结合tailwindcss2" class="headerlink" title="在create-react-app 版本为4.0.3 结合tailwindcss2"></a>在create-react-app 版本为4.0.3 结合tailwindcss2</h2><h4 id="注意：本人测试时create-react-app-版本为4-0-3-在往后的版本中，对于postcss8可能已经支持"><a href="#注意：本人测试时create-react-app-版本为4-0-3-在往后的版本中，对于postcss8可能已经支持" class="headerlink" title="注意：本人测试时create-react-app 版本为4.0.3,在往后的版本中，对于postcss8可能已经支持"></a>注意：本人测试时create-react-app 版本为4.0.3,在往后的版本中，对于postcss8可能已经支持</h4><p>最近在准备与其他同学接手一个简单的开源项目，其中需要在项目中增加一个昼夜主题切换的功能</p>
+    <content><![CDATA[<h2 id="在create-react-app-版本为4-0-3-结合tailwindcss2"><a href="#在create-react-app-版本为4-0-3-结合tailwindcss2" class="headerlink" title="在create-react-app 版本为4.0.3 结合tailwindcss2"></a>在create-react-app 版本为4.0.3 结合tailwindcss2</h2><h4 id="注意：本人测试时create-react-app-版本为4-0-3-在往后的版本中，对于postcss8可能已经支持"><a href="#注意：本人测试时create-react-app-版本为4-0-3-在往后的版本中，对于postcss8可能已经支持" class="headerlink" title="注意：本人测试时create-react-app 版本为4.0.3,在往后的版本中，对于postcss8可能已经支持"></a>注意：本人测试时create-react-app 版本为4.0.3,在往后的版本中，对于postcss8可能已经支持</h4><p>最近在准备与其他同学接手一个简单的开源项目，其中需要在项目中增加一个昼夜主题切换的功能</p>
 <p>这时我想到了两套方案：</p>
 <ul>
 <li>两套css</li>
@@ -45,6 +38,12 @@ cover: https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/pictureForBlog/acg%2Cgy_46.
 <p><img src="https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/combine-tailwind/Snipaste_2021-04-30_18-00-47.png"></p>
 <p>功能实现</p>
 ]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+      </tags>
   </entry>
   <entry>
     <title>起步-snabbdom</title>
