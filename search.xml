@@ -46,6 +46,38 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello Hexo</title>
+    <url>/2021/01/06/hello-world/</url>
+    <content><![CDATA[<p>  仔细回想，从接触代码到现在也已经有一年多的时间了，回想去年9月带着满怀期待步入这所大学。当时天真的我认为选择了计算机专业我就能顺应时代趋势毕业后收货一份心满意足的工作，但是一切因为碰见了李sir而改变。随后我去要到他的联系方式，在他的启发下我收获甚多，同时也明白了这个行业的水深，之后的两个月我在李先生的提一下第一次搭建了hexo但是过程十分地艰辛，并且最后因为改动了某个配置，年少的我（代码年龄）将刚配置的blog整的乱七八糟，无力回天。时隔一年，我的技术已有精进，但是接触越多感觉自己就越渺小。重拾hexo，我决定记录我的代码人生。</p>
+]]></content>
+      <categories>
+        <category>感言</category>
+      </categories>
+      <tags>
+        <tag>起步</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用typescript进行react-i18next类型推导</title>
+    <url>/2021/05/05/integrate-ts-reacti18n/</url>
+    <content><![CDATA[<h4 id="在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导"><a href="#在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导" class="headerlink" title="在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导"></a>在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导</h4><p>首先按照<a href="https://react.i18next.com/latest/typescript">官方文档</a>选择一种适合当前项目的定义方式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// import the original type declarations</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;react-i18next&#x27;</span>;</span><br><span class="line"><span class="comment">// import all namespaces (for the default language, only)</span></span><br><span class="line"><span class="keyword">import</span> ns1 <span class="keyword">from</span> <span class="string">&#x27;locales/en/ns1.json&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ns2 <span class="keyword">from</span> <span class="string">&#x27;locales/en/ns2.json&#x27;</span>;</span><br><span class="line"></span><br><span class="line">declare <span class="built_in">module</span> <span class="string">&#x27;react-i18next&#x27;</span> &#123;</span><br><span class="line">  <span class="comment">// and extend them!</span></span><br><span class="line">  interface Resources &#123;</span><br><span class="line">    ns1: <span class="keyword">typeof</span> ns1;</span><br><span class="line">    ns2: <span class="keyword">typeof</span> ns2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果采用官方的第一种方法(上面的这种形式)需要定义正确的 <code>NS</code>, 因为 <code>useTransition</code>使用默认命名空间<code>transition</code></p>
+<p>所以我们的操作应该是</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> translation <span class="keyword">from</span> <span class="string">&#x27;../../public/locales/en/translation.json&#x27;</span></span><br><span class="line"><span class="keyword">import</span> common <span class="keyword">from</span> <span class="string">&#x27;../../public/locales/en/common.json&#x27;</span></span><br><span class="line">declare <span class="built_in">module</span> <span class="string">&#x27;react-i18next&#x27;</span> &#123;</span><br><span class="line">  interface Resources &#123;</span><br><span class="line">    translation: <span class="keyword">typeof</span> translation,</span><br><span class="line">    common: <span class="keyword">typeof</span> common</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我增加了一个common的命名空间</p>
+<p>其次在<code>react-app-env.d.ts</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; &lt;reference path&#x3D;&quot;..&#x2F;@types&#x2F;react-i18next&#x2F;index.d.ts&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<p>经过测试两种方式都是可行的</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>起步-snabbdom</title>
     <url>/2021/02/01/hello-snabbdom/</url>
     <content><![CDATA[<h2 id="听说vue的virtualDOM部分的设计有借鉴snabbdom-正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整"><a href="#听说vue的virtualDOM部分的设计有借鉴snabbdom-正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整" class="headerlink" title="听说vue的virtualDOM部分的设计有借鉴snabbdom?正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整"></a>听说vue的virtualDOM部分的设计有借鉴snabbdom?正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整</h2><h4 id="一-全局走向分析"><a href="#一-全局走向分析" class="headerlink" title="一. 全局走向分析"></a>一. 全局走向分析</h4><h5 id="1-首先打开npm下载到本地的snabbdom包，分析文件目录"><a href="#1-首先打开npm下载到本地的snabbdom包，分析文件目录" class="headerlink" title="1.首先打开npm下载到本地的snabbdom包，分析文件目录"></a>1.首先打开npm下载到本地的snabbdom包，分析文件目录</h5><p>-src</p>
@@ -111,18 +143,6 @@
       </categories>
       <tags>
         <tag>源码</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello Hexo</title>
-    <url>/2021/01/06/hello-world/</url>
-    <content><![CDATA[<p>  仔细回想，从接触代码到现在也已经有一年多的时间了，回想去年9月带着满怀期待步入这所大学。当时天真的我认为选择了计算机专业我就能顺应时代趋势毕业后收货一份心满意足的工作，但是一切因为碰见了李sir而改变。随后我去要到他的联系方式，在他的启发下我收获甚多，同时也明白了这个行业的水深，之后的两个月我在李先生的提一下第一次搭建了hexo但是过程十分地艰辛，并且最后因为改动了某个配置，年少的我（代码年龄）将刚配置的blog整的乱七八糟，无力回天。时隔一年，我的技术已有精进，但是接触越多感觉自己就越渺小。重拾hexo，我决定记录我的代码人生。</p>
-]]></content>
-      <categories>
-        <category>感言</category>
-      </categories>
-      <tags>
-        <tag>起步</tag>
       </tags>
   </entry>
   <entry>
