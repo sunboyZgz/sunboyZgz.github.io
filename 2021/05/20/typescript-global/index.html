@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>typescript reference to global - sunBoy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="sunBoy,"> 
+    <meta name="description" content="
+    TS扩展全局变量类型推导
+    
+
+
+​    写这篇文章是因为我在学习vben项目时，在global文件的定义时出现了种种问题，但是在网上又不能及时找到合适的对策
+
+前提概念
+声明合并,"> 
+    <meta name="author" content="Zgz"> 
+    <link rel="alternative" href="atom.xml" title="sunBoy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">sunBoy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" target="_blank" rel="noopener" href="https://sunboyzgz.github.io/" data-url="https://sunboyzgz.github.io/"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">typescript reference to global</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">typescript reference to global</h1>
+        <div class="stuff">
+            <span>五月 20, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <center><h1>
+    TS扩展全局变量类型推导
+    </h1></center>
+
+<blockquote>
+<p>​    写这篇文章是因为我在学习vben项目时，在global文件的定义时出现了种种问题，但是在网上又不能及时找到合适的对策</p>
+</blockquote>
+<h4 id="前提概念"><a href="#前提概念" class="headerlink" title="前提概念"></a>前提概念</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/declaration-merging.html#introductio">声明合并(Declartion Merging)</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/declaration-merging.html#global-augmentation">全局变量如何定义？</a></li>
+</ul>
+<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><p>然后我们定义一个<code>global.d.ts</code>文件<img src="https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/typescript-global/Snipaste_2021-05-20_15-02-05.png"></p>
+<p>这是我们定义好了全局的一些变量推导，但是我们ts的检查显示我们出现了一些问题，以下为具体的报错信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Augmentations for the global scope can only be directly nested in external modules or ambient module declarations</span><br></pre></td></tr></table></figure>
+<p>这里的报错是说全局作用域的只能被直接嵌套在内部模块或者已经存在的模块定义文件中</p>
+<p>显然我们是想定义一个定义文件的</p>
+<p>在TS官网有这样的一段话</p>
+<p><a target="_blank" rel="noopener" href="https://www.typescriptlang.org/docs/handbook/2/modules.html#non-modules">https://www.typescriptlang.org/docs/handbook/2/modules.html#non-modules</a></p>
+<blockquote>
+<p>​    Before we start, it’s important to understand what TypeScript considers a module. The JavaScript specification declares that any JavaScript files without an <code>export</code> or top-level <code>await</code> should be considered a script and not a module.</p>
+<p>……</p>
+<p>If you have a file that doesn’t currently have any <code>import</code>s or <code>export</code>s, but you want to be treated as a module, add the line:</p>
+</blockquote>
+<p>因此我们可以在文件的第一行加上<code>export &#123;&#125;</code></p>
+<p>但是这是我们仍然存在报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A &#39;declare&#39; modifier cannot be used in an already ambient context.ts(1038)</span><br></pre></td></tr></table></figure>
+<p>这里的意思是我们在一个已经存在的模块中使用了<code>declare</code>，其实也很容易明白，因为<code>global</code>作用域作用在全局，应该是一个内置的模块</p>
+<p>那么现在我想到的就有两种方案：</p>
+<ul>
+<li>删除<code>declare</code> （我认为的正确做法）</li>
+<li><code>tsconfig.json</code>文件配置<code>skipLibCheck: true</code> <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/tsconfig#skipLibCheck">skipLibCheck链接</a>（vben中采用的方式）</li>
+</ul>
+<p>如果采用第一种方案,此时已经可以得到正确结果</p>
+<p><img src="https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/typescript-global/Snipaste_2021-05-20_15-50-31.png"></p>
+<p>如果使用第二种方案，这个时候在我们的文件中仍然不能正确的找到推到结果</p>
+<p><img src="https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/typescript-global/Snipaste_2021-05-20_14-22-34.png"></p>
+<p>产生这个的原因与我的文件结构和<code>tsconfig.json</code>配置有关</p>
+<p>目录结构</p>
+<img src="https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/typescript-global/Snipaste_2021-05-20_16-02-29.png" />
+
+<p>因此我们要在<code>tsconfig.json</code>中的<code>include</code>中加入我们对全局可以引用的文件</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;include&quot;: [&quot;src/**/*.ts&quot;, &quot;src/**/*.d.ts&quot;, &quot;src/**/*.tsx&quot;, &quot;src/**/*.vue&quot;, &quot;build/**/*.ts&quot;, &quot;types/**/*.d.ts&quot;]</span><br></pre></td></tr></table></figure>
+<p>然后开启<code>skipLibCheck</code>消除报错，就可实现推导了</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci='8d00cc12cdbdc3de1409'
+        data-cs='6a1c22eca394bdb3117a91951a80c87c48f98732'
+        data-r='sunboyZgz.github.io'
+        data-o='sunboyZgz'
+        data-a='sunboyZgz'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

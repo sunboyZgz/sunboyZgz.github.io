@@ -46,38 +46,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello Hexo</title>
-    <url>/2021/01/06/hello-world/</url>
-    <content><![CDATA[<p>  仔细回想，从接触代码到现在也已经有一年多的时间了，回想去年9月带着满怀期待步入这所大学。当时天真的我认为选择了计算机专业我就能顺应时代趋势毕业后收货一份心满意足的工作，但是一切因为碰见了李sir而改变。随后我去要到他的联系方式，在他的启发下我收获甚多，同时也明白了这个行业的水深，之后的两个月我在李先生的提一下第一次搭建了hexo但是过程十分地艰辛，并且最后因为改动了某个配置，年少的我（代码年龄）将刚配置的blog整的乱七八糟，无力回天。时隔一年，我的技术已有精进，但是接触越多感觉自己就越渺小。重拾hexo，我决定记录我的代码人生。</p>
-]]></content>
-      <categories>
-        <category>感言</category>
-      </categories>
-      <tags>
-        <tag>起步</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用typescript进行react-i18next类型推导</title>
-    <url>/2021/05/05/integrate-ts-reacti18n/</url>
-    <content><![CDATA[<h4 id="在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导"><a href="#在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导" class="headerlink" title="在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导"></a>在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导</h4><p>首先按照<a href="https://react.i18next.com/latest/typescript">官方文档</a>选择一种适合当前项目的定义方式</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// import the original type declarations</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;react-i18next&#x27;</span>;</span><br><span class="line"><span class="comment">// import all namespaces (for the default language, only)</span></span><br><span class="line"><span class="keyword">import</span> ns1 <span class="keyword">from</span> <span class="string">&#x27;locales/en/ns1.json&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ns2 <span class="keyword">from</span> <span class="string">&#x27;locales/en/ns2.json&#x27;</span>;</span><br><span class="line"></span><br><span class="line">declare <span class="built_in">module</span> <span class="string">&#x27;react-i18next&#x27;</span> &#123;</span><br><span class="line">  <span class="comment">// and extend them!</span></span><br><span class="line">  interface Resources &#123;</span><br><span class="line">    ns1: <span class="keyword">typeof</span> ns1;</span><br><span class="line">    ns2: <span class="keyword">typeof</span> ns2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果采用官方的第一种方法(上面的这种形式)需要定义正确的 <code>NS</code>, 因为 <code>useTransition</code>使用默认命名空间<code>transition</code></p>
-<p>所以我们的操作应该是</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> translation <span class="keyword">from</span> <span class="string">&#x27;../../public/locales/en/translation.json&#x27;</span></span><br><span class="line"><span class="keyword">import</span> common <span class="keyword">from</span> <span class="string">&#x27;../../public/locales/en/common.json&#x27;</span></span><br><span class="line">declare <span class="built_in">module</span> <span class="string">&#x27;react-i18next&#x27;</span> &#123;</span><br><span class="line">  interface Resources &#123;</span><br><span class="line">    translation: <span class="keyword">typeof</span> translation,</span><br><span class="line">    common: <span class="keyword">typeof</span> common</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里我增加了一个common的命名空间</p>
-<p>其次在<code>react-app-env.d.ts</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; &lt;reference path&#x3D;&quot;..&#x2F;@types&#x2F;react-i18next&#x2F;index.d.ts&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
-<p>经过测试两种方式都是可行的</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>配置</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>起步-snabbdom</title>
     <url>/2021/02/01/hello-snabbdom/</url>
     <content><![CDATA[<h2 id="听说vue的virtualDOM部分的设计有借鉴snabbdom-正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整"><a href="#听说vue的virtualDOM部分的设计有借鉴snabbdom-正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整" class="headerlink" title="听说vue的virtualDOM部分的设计有借鉴snabbdom?正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整"></a>听说vue的virtualDOM部分的设计有借鉴snabbdom?正好现在水平也不够去阅读vue的源码，正好用snabbdom来联系思维与阅读能力，为未来我阅读vue打下一点小台阶，话不多说开整</h2><h4 id="一-全局走向分析"><a href="#一-全局走向分析" class="headerlink" title="一. 全局走向分析"></a>一. 全局走向分析</h4><h5 id="1-首先打开npm下载到本地的snabbdom包，分析文件目录"><a href="#1-首先打开npm下载到本地的snabbdom包，分析文件目录" class="headerlink" title="1.首先打开npm下载到本地的snabbdom包，分析文件目录"></a>1.首先打开npm下载到本地的snabbdom包，分析文件目录</h5><p>-src</p>
@@ -143,6 +111,92 @@
       </categories>
       <tags>
         <tag>源码</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello Hexo</title>
+    <url>/2021/01/06/hello-world/</url>
+    <content><![CDATA[<p>  仔细回想，从接触代码到现在也已经有一年多的时间了，回想去年9月带着满怀期待步入这所大学。当时天真的我认为选择了计算机专业我就能顺应时代趋势毕业后收货一份心满意足的工作，但是一切因为碰见了李sir而改变。随后我去要到他的联系方式，在他的启发下我收获甚多，同时也明白了这个行业的水深，之后的两个月我在李先生的提一下第一次搭建了hexo但是过程十分地艰辛，并且最后因为改动了某个配置，年少的我（代码年龄）将刚配置的blog整的乱七八糟，无力回天。时隔一年，我的技术已有精进，但是接触越多感觉自己就越渺小。重拾hexo，我决定记录我的代码人生。</p>
+]]></content>
+      <categories>
+        <category>感言</category>
+      </categories>
+      <tags>
+        <tag>起步</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>typescript reference to global</title>
+    <url>/2021/05/20/typescript-global/</url>
+    <content><![CDATA[<center><h1>
+    TS扩展全局变量类型推导
+    </h1></center>
+
+<blockquote>
+<p>​    写这篇文章是因为我在学习vben项目时，在global文件的定义时出现了种种问题，但是在网上又不能及时找到合适的对策</p>
+</blockquote>
+<h4 id="前提概念"><a href="#前提概念" class="headerlink" title="前提概念"></a>前提概念</h4><ul>
+<li><a href="https://www.typescriptlang.org/docs/handbook/declaration-merging.html#introductio">声明合并(Declartion Merging)</a></li>
+<li><a href="https://www.typescriptlang.org/docs/handbook/declaration-merging.html#global-augmentation">全局变量如何定义？</a></li>
+</ul>
+<h4 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h4><p>然后我们定义一个<code>global.d.ts</code>文件<img src="https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/typescript-global/Snipaste_2021-05-20_15-02-05.png"></p>
+<p>这是我们定义好了全局的一些变量推导，但是我们ts的检查显示我们出现了一些问题，以下为具体的报错信息</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Augmentations for the global scope can only be directly nested in external modules or ambient module declarations</span><br></pre></td></tr></table></figure>
+<p>这里的报错是说全局作用域的只能被直接嵌套在内部模块或者已经存在的模块定义文件中</p>
+<p>显然我们是想定义一个定义文件的</p>
+<p>在TS官网有这样的一段话</p>
+<p><a href="https://www.typescriptlang.org/docs/handbook/2/modules.html#non-modules">https://www.typescriptlang.org/docs/handbook/2/modules.html#non-modules</a></p>
+<blockquote>
+<p>​    Before we start, it’s important to understand what TypeScript considers a module. The JavaScript specification declares that any JavaScript files without an <code>export</code> or top-level <code>await</code> should be considered a script and not a module.</p>
+<p>……</p>
+<p>If you have a file that doesn’t currently have any <code>import</code>s or <code>export</code>s, but you want to be treated as a module, add the line:</p>
+</blockquote>
+<p>因此我们可以在文件的第一行加上<code>export &#123;&#125;</code></p>
+<p>但是这是我们仍然存在报错</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">A &#39;declare&#39; modifier cannot be used in an already ambient context.ts(1038)</span><br></pre></td></tr></table></figure>
+<p>这里的意思是我们在一个已经存在的模块中使用了<code>declare</code>，其实也很容易明白，因为<code>global</code>作用域作用在全局，应该是一个内置的模块</p>
+<p>那么现在我想到的就有两种方案：</p>
+<ul>
+<li>删除<code>declare</code> （我认为的正确做法）</li>
+<li><code>tsconfig.json</code>文件配置<code>skipLibCheck: true</code> <a href="https://www.typescriptlang.org/tsconfig#skipLibCheck">skipLibCheck链接</a>（vben中采用的方式）</li>
+</ul>
+<p>如果采用第一种方案,此时已经可以得到正确结果</p>
+<p><img src="https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/typescript-global/Snipaste_2021-05-20_15-50-31.png"></p>
+<p>如果使用第二种方案，这个时候在我们的文件中仍然不能正确的找到推到结果</p>
+<p><img src="https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/typescript-global/Snipaste_2021-05-20_14-22-34.png"></p>
+<p>产生这个的原因与我的文件结构和<code>tsconfig.json</code>配置有关</p>
+<p>目录结构</p>
+<img src="https://blog-zgz.oss-cn-hangzhou.aliyuncs.com/typescript-global/Snipaste_2021-05-20_16-02-29.png" />
+
+<p>因此我们要在<code>tsconfig.json</code>中的<code>include</code>中加入我们对全局可以引用的文件</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;include&quot;: [&quot;src/**/*.ts&quot;, &quot;src/**/*.d.ts&quot;, &quot;src/**/*.tsx&quot;, &quot;src/**/*.vue&quot;, &quot;build/**/*.ts&quot;, &quot;types/**/*.d.ts&quot;]</span><br></pre></td></tr></table></figure>
+<p>然后开启<code>skipLibCheck</code>消除报错，就可实现推导了</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用typescript进行react-i18next类型推导</title>
+    <url>/2021/05/05/integrate-ts-reacti18n/</url>
+    <content><![CDATA[<h4 id="在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导"><a href="#在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导" class="headerlink" title="在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导"></a>在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导</h4><p>首先按照<a href="https://react.i18next.com/latest/typescript">官方文档</a>选择一种适合当前项目的定义方式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// import the original type declarations</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;react-i18next&#x27;</span>;</span><br><span class="line"><span class="comment">// import all namespaces (for the default language, only)</span></span><br><span class="line"><span class="keyword">import</span> ns1 <span class="keyword">from</span> <span class="string">&#x27;locales/en/ns1.json&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ns2 <span class="keyword">from</span> <span class="string">&#x27;locales/en/ns2.json&#x27;</span>;</span><br><span class="line"></span><br><span class="line">declare <span class="built_in">module</span> <span class="string">&#x27;react-i18next&#x27;</span> &#123;</span><br><span class="line">  <span class="comment">// and extend them!</span></span><br><span class="line">  interface Resources &#123;</span><br><span class="line">    ns1: <span class="keyword">typeof</span> ns1;</span><br><span class="line">    ns2: <span class="keyword">typeof</span> ns2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果采用官方的第一种方法(上面的这种形式)需要定义正确的 <code>NS</code>, 因为 <code>useTransition</code>使用默认命名空间<code>transition</code></p>
+<p>所以我们的操作应该是</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> translation <span class="keyword">from</span> <span class="string">&#x27;../../public/locales/en/translation.json&#x27;</span></span><br><span class="line"><span class="keyword">import</span> common <span class="keyword">from</span> <span class="string">&#x27;../../public/locales/en/common.json&#x27;</span></span><br><span class="line">declare <span class="built_in">module</span> <span class="string">&#x27;react-i18next&#x27;</span> &#123;</span><br><span class="line">  interface Resources &#123;</span><br><span class="line">    translation: <span class="keyword">typeof</span> translation,</span><br><span class="line">    common: <span class="keyword">typeof</span> common</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我增加了一个common的命名空间</p>
+<p>其次在<code>react-app-env.d.ts</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; &lt;reference path&#x3D;&quot;..&#x2F;@types&#x2F;react-i18next&#x2F;index.d.ts&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<p>经过测试两种方式都是可行的</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
       </tags>
   </entry>
   <entry>
