@@ -1,0 +1,225 @@
+
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>first learning of rollup - sunBoy</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="sunBoy,"> 
+    <meta name="description" content="
+    初次学习rollup
+  
+
+因为最近在学习vite的使用和一些与开源相关的知识，最终还是打算把这个技术栈（债）补上😂
+为什么要学习rolluprollup作为一款优秀的打包工具，同时提,"> 
+    <meta name="author" content="Zgz"> 
+    <link rel="alternative" href="atom.xml" title="sunBoy" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">sunBoy</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" target="_blank" rel="noopener" href="https://sunboyzgz.github.io/" data-url="https://sunboyzgz.github.io/"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">first learning of rollup</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">first learning of rollup</h1>
+        <div class="stuff">
+            <span>五月 31, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%8A%80%E6%9C%AF%E6%A0%88/" rel="tag">技术栈</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 align="center">
+    初次学习rollup
+</h1>  
+
+<p>因为最近在学习<code>vite</code>的使用和一些与开源相关的知识，最终还是打算把这个技术栈（债）补上😂</p>
+<h4 id="为什么要学习rollup"><a href="#为什么要学习rollup" class="headerlink" title="为什么要学习rollup"></a>为什么要学习rollup</h4><p><a target="_blank" rel="noopener" href="https://rollupjs.org/guide/en/">rollup</a>作为一款优秀的打包工具，同时提供cli、配置文件、js脚本执行的打包方式</p>
+<p>同时它也实现了<code>tree-shaking</code>的支持</p>
+<p>虽然在大型应用开发过程中的开发体验不及webpack，但是它用在打包一些小的工具库、开源包方面十分优秀</p>
+<p>不过值得一提的是<a target="_blank" rel="noopener" href="https://vitejs.dev/">vite</a>在打包方面采用了<code>rollup</code>，同时<code>vite</code>对<code>rollup</code>提供的接口进行了些许扩展，并且部分的rollup插件也已经实现了对<code>vite</code>的支持，<code>vite</code>的开发时体验是非常优秀的，足以弥补<code>rollup</code>开发时的不足之处</p>
+<hr>
+
+<h4 id="核心知识"><a href="#核心知识" class="headerlink" title="核心知识"></a>核心知识</h4><p><code>inputOptions</code>:</p>
+<ul>
+<li>external</li>
+<li>input</li>
+<li>plugins</li>
+<li>………………</li>
+</ul>
+<p><code>outputOptions</code>:</p>
+<ul>
+<li>dir</li>
+<li>file</li>
+<li>format</li>
+<li>globals</li>
+<li>name</li>
+<li>plugins</li>
+</ul>
+<p><code>rollup</code>中 命令行输入\ 配置文件\ <code>js Api</code>之间存在一定的对应关系如</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// rollup.config.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    input: <span class="string">&#x27;src/main.js&#x27;</span>,</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// build_script.js</span></span><br><span class="line"><span class="keyword">const</span> rollup = <span class="built_in">require</span>(<span class="string">&#x27;rollup&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> input = <span class="built_in">require</span>(<span class="string">&#x27;rollup.config.js&#x27;</span>).input</span><br><span class="line"><span class="keyword">const</span> inputOptions = &#123; input &#125;</span><br><span class="line"><span class="keyword">const</span> outputOptions = &#123; ………… &#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">build</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> bunld = <span class="keyword">await</span> rollup.rollup(inputOptions)</span><br><span class="line">    <span class="keyword">await</span> bundle.generate(outputOptions)</span><br><span class="line">   	……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rollup -i ./src/main.js -f cjs</span><br></pre></td></tr></table></figure>
+<p>但并不是所有的指令与配置项都存在对应,<a target="_blank" rel="noopener" href="https://rollupjs.org/guide/en/#command-line-flags">源链解释</a></p>
+<hr/>
+
+<h4 id="rollup-与-npm-集成"><a href="#rollup-与-npm-集成" class="headerlink" title="rollup 与 npm 集成"></a>rollup 与 npm 集成</h4><p>当一个要被打包的文件的导入模块中存在<code>npm</code>包，rollup并不知道要在<code>node_modules</code>中找到对应的文件</p>
+<p> <a target="_blank" rel="noopener" href="https://github.com/rollup/rollup-plugin-node-resolve">rollup-plugin-node-resolve</a>：告诉rollup如何找到对应导入的<code>npm</code></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/rollup/rollup-plugin-commonjs">rollup-plugin-commonjs</a>：使得cjs规范的<code>npm</code>能转换为es2015供<code>rollup</code>处理</p>
+<hr/>
+
+<h4 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h4><p><a target="_blank" rel="noopener" href="https://github.com/rollup/awesome">https://github.com/rollup/awesome</a></p>
+<p>plugin开发规范：<a target="_blank" rel="noopener" href="https://rollupjs.org/guide/en/#conventions">https://rollupjs.org/guide/en/#conventions</a></p>
+<p>一个<code>rollup插件</code>就是 一个符合规范的 + 带有<code>rollup</code>实现的钩子的对象</p>
+<ul>
+<li><p>插件钩子带有 kind(async, first, sequential, parallel)决定了他们的执行方式</p>
+</li>
+<li><p>rollup在不同的工作时期具有许多的钩子如：</p>
+<p><code>rollup.rollup</code>激活<code>build</code>部分的钩子</p>
+<p><code>bundleObj.generate</code>激活<code>ouput generation</code>部分的钩子，同时不同工作时期中的不同钩子也具有一定顺序</p>
+</li>
+</ul>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci='8d00cc12cdbdc3de1409'
+        data-cs='6a1c22eca394bdb3117a91951a80c87c48f98732'
+        data-r='sunboyZgz.github.io'
+        data-o='sunboyZgz'
+        data-a='sunboyZgz'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

@@ -126,6 +126,87 @@
       </tags>
   </entry>
   <entry>
+    <title>使用typescript进行react-i18next类型推导</title>
+    <url>/2021/05/05/integrate-ts-reacti18n/</url>
+    <content><![CDATA[<h4 id="在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导"><a href="#在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导" class="headerlink" title="在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导"></a>在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导</h4><p>首先按照<a href="https://react.i18next.com/latest/typescript">官方文档</a>选择一种适合当前项目的定义方式</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// import the original type declarations</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;react-i18next&#x27;</span>;</span><br><span class="line"><span class="comment">// import all namespaces (for the default language, only)</span></span><br><span class="line"><span class="keyword">import</span> ns1 <span class="keyword">from</span> <span class="string">&#x27;locales/en/ns1.json&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ns2 <span class="keyword">from</span> <span class="string">&#x27;locales/en/ns2.json&#x27;</span>;</span><br><span class="line"></span><br><span class="line">declare <span class="built_in">module</span> <span class="string">&#x27;react-i18next&#x27;</span> &#123;</span><br><span class="line">  <span class="comment">// and extend them!</span></span><br><span class="line">  interface Resources &#123;</span><br><span class="line">    ns1: <span class="keyword">typeof</span> ns1;</span><br><span class="line">    ns2: <span class="keyword">typeof</span> ns2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果采用官方的第一种方法(上面的这种形式)需要定义正确的 <code>NS</code>, 因为 <code>useTransition</code>使用默认命名空间<code>transition</code></p>
+<p>所以我们的操作应该是</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> translation <span class="keyword">from</span> <span class="string">&#x27;../../public/locales/en/translation.json&#x27;</span></span><br><span class="line"><span class="keyword">import</span> common <span class="keyword">from</span> <span class="string">&#x27;../../public/locales/en/common.json&#x27;</span></span><br><span class="line">declare <span class="built_in">module</span> <span class="string">&#x27;react-i18next&#x27;</span> &#123;</span><br><span class="line">  interface Resources &#123;</span><br><span class="line">    translation: <span class="keyword">typeof</span> translation,</span><br><span class="line">    common: <span class="keyword">typeof</span> common</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里我增加了一个common的命名空间</p>
+<p>其次在<code>react-app-env.d.ts</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; &lt;reference path&#x3D;&quot;..&#x2F;@types&#x2F;react-i18next&#x2F;index.d.ts&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<p>经过测试两种方式都是可行的</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>first learning of rollup</title>
+    <url>/2021/05/31/try-rollup/</url>
+    <content><![CDATA[<h1 align="center">
+    初次学习rollup
+</h1>  
+
+<p>因为最近在学习<code>vite</code>的使用和一些与开源相关的知识，最终还是打算把这个技术栈（债）补上😂</p>
+<h4 id="为什么要学习rollup"><a href="#为什么要学习rollup" class="headerlink" title="为什么要学习rollup"></a>为什么要学习rollup</h4><p><a href="https://rollupjs.org/guide/en/">rollup</a>作为一款优秀的打包工具，同时提供cli、配置文件、js脚本执行的打包方式</p>
+<p>同时它也实现了<code>tree-shaking</code>的支持</p>
+<p>虽然在大型应用开发过程中的开发体验不及webpack，但是它用在打包一些小的工具库、开源包方面十分优秀</p>
+<p>不过值得一提的是<a href="https://vitejs.dev/">vite</a>在打包方面采用了<code>rollup</code>，同时<code>vite</code>对<code>rollup</code>提供的接口进行了些许扩展，并且部分的rollup插件也已经实现了对<code>vite</code>的支持，<code>vite</code>的开发时体验是非常优秀的，足以弥补<code>rollup</code>开发时的不足之处</p>
+<hr>
+
+<h4 id="核心知识"><a href="#核心知识" class="headerlink" title="核心知识"></a>核心知识</h4><p><code>inputOptions</code>:</p>
+<ul>
+<li>external</li>
+<li>input</li>
+<li>plugins</li>
+<li>………………</li>
+</ul>
+<p><code>outputOptions</code>:</p>
+<ul>
+<li>dir</li>
+<li>file</li>
+<li>format</li>
+<li>globals</li>
+<li>name</li>
+<li>plugins</li>
+</ul>
+<p><code>rollup</code>中 命令行输入\ 配置文件\ <code>js Api</code>之间存在一定的对应关系如</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// rollup.config.js</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    input: <span class="string">&#x27;src/main.js&#x27;</span>,</span><br><span class="line">    ……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// build_script.js</span></span><br><span class="line"><span class="keyword">const</span> rollup = <span class="built_in">require</span>(<span class="string">&#x27;rollup&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> input = <span class="built_in">require</span>(<span class="string">&#x27;rollup.config.js&#x27;</span>).input</span><br><span class="line"><span class="keyword">const</span> inputOptions = &#123; input &#125;</span><br><span class="line"><span class="keyword">const</span> outputOptions = &#123; ………… &#125;</span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">build</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> bunld = <span class="keyword">await</span> rollup.rollup(inputOptions)</span><br><span class="line">    <span class="keyword">await</span> bundle.generate(outputOptions)</span><br><span class="line">   	……</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">rollup -i ./src/main.js -f cjs</span><br></pre></td></tr></table></figure>
+<p>但并不是所有的指令与配置项都存在对应,<a href="https://rollupjs.org/guide/en/#command-line-flags">源链解释</a></p>
+<hr/>
+
+<h4 id="rollup-与-npm-集成"><a href="#rollup-与-npm-集成" class="headerlink" title="rollup 与 npm 集成"></a>rollup 与 npm 集成</h4><p>当一个要被打包的文件的导入模块中存在<code>npm</code>包，rollup并不知道要在<code>node_modules</code>中找到对应的文件</p>
+<p> <a href="https://github.com/rollup/rollup-plugin-node-resolve">rollup-plugin-node-resolve</a>：告诉rollup如何找到对应导入的<code>npm</code></p>
+<p><a href="https://github.com/rollup/rollup-plugin-commonjs">rollup-plugin-commonjs</a>：使得cjs规范的<code>npm</code>能转换为es2015供<code>rollup</code>处理</p>
+<hr/>
+
+<h4 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h4><p><a href="https://github.com/rollup/awesome">https://github.com/rollup/awesome</a></p>
+<p>plugin开发规范：<a href="https://rollupjs.org/guide/en/#conventions">https://rollupjs.org/guide/en/#conventions</a></p>
+<p>一个<code>rollup插件</code>就是 一个符合规范的 + 带有<code>rollup</code>实现的钩子的对象</p>
+<ul>
+<li><p>插件钩子带有 kind(async, first, sequential, parallel)决定了他们的执行方式</p>
+</li>
+<li><p>rollup在不同的工作时期具有许多的钩子如：</p>
+<p><code>rollup.rollup</code>激活<code>build</code>部分的钩子</p>
+<p><code>bundleObj.generate</code>激活<code>ouput generation</code>部分的钩子，同时不同工作时期中的不同钩子也具有一定顺序</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>技术栈</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>typescript reference to global</title>
     <url>/2021/05/20/typescript-global/</url>
     <content><![CDATA[<center><h1>
@@ -171,26 +252,6 @@
 <p>因此我们要在<code>tsconfig.json</code>中的<code>include</code>中加入我们对全局可以引用的文件</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;include&quot;: [&quot;src/**/*.ts&quot;, &quot;src/**/*.d.ts&quot;, &quot;src/**/*.tsx&quot;, &quot;src/**/*.vue&quot;, &quot;build/**/*.ts&quot;, &quot;types/**/*.d.ts&quot;]</span><br></pre></td></tr></table></figure>
 <p>然后开启<code>skipLibCheck</code>消除报错，就可实现推导了</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>配置</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用typescript进行react-i18next类型推导</title>
-    <url>/2021/05/05/integrate-ts-reacti18n/</url>
-    <content><![CDATA[<h4 id="在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导"><a href="#在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导" class="headerlink" title="在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导"></a>在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导</h4><p>首先按照<a href="https://react.i18next.com/latest/typescript">官方文档</a>选择一种适合当前项目的定义方式</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// import the original type declarations</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;react-i18next&#x27;</span>;</span><br><span class="line"><span class="comment">// import all namespaces (for the default language, only)</span></span><br><span class="line"><span class="keyword">import</span> ns1 <span class="keyword">from</span> <span class="string">&#x27;locales/en/ns1.json&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ns2 <span class="keyword">from</span> <span class="string">&#x27;locales/en/ns2.json&#x27;</span>;</span><br><span class="line"></span><br><span class="line">declare <span class="built_in">module</span> <span class="string">&#x27;react-i18next&#x27;</span> &#123;</span><br><span class="line">  <span class="comment">// and extend them!</span></span><br><span class="line">  interface Resources &#123;</span><br><span class="line">    ns1: <span class="keyword">typeof</span> ns1;</span><br><span class="line">    ns2: <span class="keyword">typeof</span> ns2;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>如果采用官方的第一种方法(上面的这种形式)需要定义正确的 <code>NS</code>, 因为 <code>useTransition</code>使用默认命名空间<code>transition</code></p>
-<p>所以我们的操作应该是</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> translation <span class="keyword">from</span> <span class="string">&#x27;../../public/locales/en/translation.json&#x27;</span></span><br><span class="line"><span class="keyword">import</span> common <span class="keyword">from</span> <span class="string">&#x27;../../public/locales/en/common.json&#x27;</span></span><br><span class="line">declare <span class="built_in">module</span> <span class="string">&#x27;react-i18next&#x27;</span> &#123;</span><br><span class="line">  interface Resources &#123;</span><br><span class="line">    translation: <span class="keyword">typeof</span> translation,</span><br><span class="line">    common: <span class="keyword">typeof</span> common</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>这里我增加了一个common的命名空间</p>
-<p>其次在<code>react-app-env.d.ts</code></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;&#x2F; &lt;reference path&#x3D;&quot;..&#x2F;@types&#x2F;react-i18next&#x2F;index.d.ts&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
-<p>经过测试两种方式都是可行的</p>
 ]]></content>
       <categories>
         <category>学习</category>
