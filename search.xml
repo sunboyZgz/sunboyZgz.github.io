@@ -126,6 +126,26 @@
       </tags>
   </entry>
   <entry>
+    <title>problem-windi-vue</title>
+    <url>/2021/06/05/problem-windi-vue/</url>
+    <content><![CDATA[<h1 align="center">
+    vscode windicss插件使用中的问题
+</h1>
+
+
+<p>此片文章从开始使用vscode    windicss插件开始记录，记录个人碰到的一些问题，可能会对他人有所帮助，但是其中bug可能会在未来某天被官网解决。</p>
+<h2 id="1-config-with-vscode-auto-rename-tag（插件冲突导致不能提示）"><a href="#1-config-with-vscode-auto-rename-tag（插件冲突导致不能提示）" class="headerlink" title="1. config with vscode-auto-rename-tag（插件冲突导致不能提示）"></a>1. config with <code>vscode-auto-rename-tag</code>（插件冲突导致不能提示）</h2><p>2021/6/5</p>
+<p>this extension conflicts with <a href="https://github.com/formulahendry/vscode-auto-rename-tag">vscode-auto-rename-tag</a>.<br>disable the auto-rename-tag and restart vscode, the windicss intellisense works fine.</p>
+<p><a href="https://github.com/windicss/windicss-intellisense/issues/113">github issue源地址</a></p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用typescript进行react-i18next类型推导</title>
     <url>/2021/05/05/integrate-ts-reacti18n/</url>
     <content><![CDATA[<h4 id="在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导"><a href="#在create-react-app-版本为4-0-3-使用typescript进行react-i18next类型推导" class="headerlink" title="在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导"></a>在create-react-app 版本为4.0.3 使用typescript进行react-i18next类型推导</h4><p>首先按照<a href="https://react.i18next.com/latest/typescript">官方文档</a>选择一种适合当前项目的定义方式</p>
@@ -252,6 +272,7 @@
 <p>因此我们要在<code>tsconfig.json</code>中的<code>include</code>中加入我们对全局可以引用的文件</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">&quot;include&quot;: [&quot;src/**/*.ts&quot;, &quot;src/**/*.d.ts&quot;, &quot;src/**/*.tsx&quot;, &quot;src/**/*.vue&quot;, &quot;build/**/*.ts&quot;, &quot;types/**/*.d.ts&quot;]</span><br></pre></td></tr></table></figure>
 <p>然后开启<code>skipLibCheck</code>消除报错，就可实现推导了</p>
+<p>2021/6/3-<code>skipLibCheck</code>的实际作用：启用它会阻止Typescript对整个导入的库进行类型检查。相反，Typescript只会针对这些类型对您使用的代码进行类型检查。这意味着只要您不使用导入库的不兼容部分，它们就可以正常编译。<code>--skipLibCheck</code>会降低类型检查的能力，理想情况下我们不会使用它。但是并不是每个库都提供完美的类型，因此跳过它可能会很好。</p>
 ]]></content>
       <categories>
         <category>学习</category>

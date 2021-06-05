@@ -5,12 +5,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Archive: 2021</title>
+    <title>problem-windi-vue - sunBoy</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="sunBoy,"> 
-    
+    <meta name="description" content="
+    vscode windicss插件使用中的问题
+
+
+
+此片文章从开始使用vscode    windicss插件开始记录，记录个人碰到的一些问题，可能会对他人有所帮助，但是其中bug可能会,"> 
     <meta name="author" content="Zgz"> 
     <link rel="alternative" href="atom.xml" title="sunBoy" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -35,75 +40,75 @@
 <body class="loading">
     <span id="config-title" style="display:none">sunBoy</span>
     <div id="loader"></div>
-    <div id="single" class="page">
-    <div id="top">
-        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
-    </div>
-    <div class="section">
-        <div class="article">
-            <div class="main">
-                <div class="content">
-                    <div class="timeline">
-                      <h2 class="timeline-title">归档: 8篇</h2><hr>
-                      
-                      
-                        
-                          <h3 class="timeline-subtitle">2021</h3>
-                        
-                        <div class="timeline-item">
-                          <time>2021-06-05</time>
-                          <a target="_self" href="/2021/06/05/problem-windi-vue/">problem-windi-vue</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-05-31</time>
-                          <a target="_self" href="/2021/05/31/try-rollup/">first learning of rollup</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-05-20</time>
-                          <a target="_self" href="/2021/05/20/typescript-global/">typescript reference to global</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-05-05</time>
-                          <a target="_self" href="/2021/05/05/integrate-ts-reacti18n/">使用typescript进行react-i18next类型推导</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-04-30</time>
-                          <a target="_self" href="/2021/04/30/combine-tailwind2/">CRA-combine-tailwind2</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-02-01</time>
-                          <a target="_self" href="/2021/02/01/hello-snabbdom/">起步-snabbdom</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-01-27</time>
-                          <a target="_self" href="/2021/01/27/hello-mustache/">初探mustache</a>
-                        </div>
-                      
-                        
-                        <div class="timeline-item">
-                          <time>2021-01-06</time>
-                          <a target="_self" href="/2021/01/06/hello-world/">Hello Hexo</a>
-                        </div>
-                      
-                    </div>
-                </div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" target="_blank" rel="noopener" href="https://sunboyzgz.github.io/" data-url="https://sunboyzgz.github.io/"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">problem-windi-vue</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
             </div>
+            <div id="qr"></div>
         </div>
     </div>
+    <div class="scrollbar"></div>
 </div>
 
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">problem-windi-vue</h1>
+        <div class="stuff">
+            <span>六月 05, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">配置</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 align="center">
+    vscode windicss插件使用中的问题
+</h1>
+
+
+<p>此片文章从开始使用vscode    windicss插件开始记录，记录个人碰到的一些问题，可能会对他人有所帮助，但是其中bug可能会在未来某天被官网解决。</p>
+<h2 id="1-config-with-vscode-auto-rename-tag（插件冲突导致不能提示）"><a href="#1-config-with-vscode-auto-rename-tag（插件冲突导致不能提示）" class="headerlink" title="1. config with vscode-auto-rename-tag（插件冲突导致不能提示）"></a>1. config with <code>vscode-auto-rename-tag</code>（插件冲突导致不能提示）</h2><p>2021/6/5</p>
+<p>this extension conflicts with <a target="_blank" rel="noopener" href="https://github.com/formulahendry/vscode-auto-rename-tag">vscode-auto-rename-tag</a>.<br>disable the auto-rename-tag and restart vscode, the windicss intellisense works fine.</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/windicss/windicss-intellisense/issues/113">github issue源地址</a></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='true'
+        data-ci='8d00cc12cdbdc3de1409'
+        data-cs='6a1c22eca394bdb3117a91951a80c87c48f98732'
+        data-r='sunboyZgz.github.io'
+        data-o='sunboyZgz'
+        data-a='sunboyZgz'
+        data-d='false'
+    >查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
 </body>
 
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
