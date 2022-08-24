@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="sunboyZgz">
+  <meta name="keywords" content="technic">
+  
+    <meta name="description" content="为什么会有这篇文章？由于最近c盘紧张，我重装了一次系统同进行了一些卷容量的调整，因为最近没有怎么写过blog在进行格式化的时候将原来搭建的个人blog给清除了而且也没有做备份，git page上传的也只是一个经过处理后的html文件，所以我原来的blog文件都丢失了。因为我需要进行一些环境配置，所以写下了这篇文章。 nodejs + npm + pnpm 配置1.windows 下安装nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="新的篇章">
+<meta property="og:url" content="http://example.com/2022/08/23/My-new-way/index.html">
+<meta property="og:site_name" content="sun">
+<meta property="og:description" content="为什么会有这篇文章？由于最近c盘紧张，我重装了一次系统同进行了一些卷容量的调整，因为最近没有怎么写过blog在进行格式化的时候将原来搭建的个人blog给清除了而且也没有做备份，git page上传的也只是一个经过处理后的html文件，所以我原来的blog文件都丢失了。因为我需要进行一些环境配置，所以写下了这篇文章。 nodejs + npm + pnpm 配置1.windows 下安装nodejs">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="e:/tools/assets/image-20220823141458429.png">
+<meta property="article:published_time" content="2022-08-23T21:39:31.000Z">
+<meta property="article:modified_time" content="2022-08-24T11:53:59.208Z">
+<meta property="article:author" content="sunboyZgz">
+<meta property="article:tag" content="配置">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="e:/tools/assets/image-20220823141458429.png">
+  
+  
+  
+  <title>新的篇章 - sun</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="新的篇章"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-23 21:39" pubdate>
+          2022年8月23日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          17 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">新的篇章</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="为什么会有这篇文章？"><a href="#为什么会有这篇文章？" class="headerlink" title="为什么会有这篇文章？"></a>为什么会有这篇文章？</h1><p>由于最近c盘紧张，我重装了一次系统同进行了一些卷容量的调整，因为最近没有怎么写过blog在进行格式化的时候将原来搭建的个人blog给清除了而且也没有做备份，git page上传的也只是一个经过处理后的html文件，所以我原来的blog文件都丢失了。因为我需要进行一些环境配置，所以写下了这篇文章。</p>
+<h1 id="nodejs-npm-pnpm-配置"><a href="#nodejs-npm-pnpm-配置" class="headerlink" title="nodejs + npm + pnpm 配置"></a>nodejs + npm + pnpm 配置</h1><h2 id="1-windows-下安装nodejs"><a href="#1-windows-下安装nodejs" class="headerlink" title="1.windows 下安装nodejs"></a>1.windows 下安装nodejs</h2><p><a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a></p>
+<p>按照步骤安卓即可，注意一下nodejs的安装目录即可</p>
+<h2 id="2-配置npm"><a href="#2-配置npm" class="headerlink" title="2.配置npm"></a>2.配置npm</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config get prefix<br></code></pre></td></tr></table></figure>
+
+<p>这条命令可以直接获取你的全局安装路径的前缀,这个前缀会用于</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm install <span class="hljs-literal">-g</span> xxxx<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config <span class="hljs-built_in">set</span> prefix <span class="hljs-string">&quot;D:\Program Files\nodejs\node_global&quot;</span><br><br>npm config <span class="hljs-built_in">set</span> cache <span class="hljs-string">&quot;D:\Program Files\nodejs\node_cache&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><ol>
+<li></li>
+</ol>
+<p><code>NODE_PATH    D:\Program Files\nodejs\node_global\node_modules</code></p>
+<p><code>NODE_PATH</code> 用于进行全局的模块检索，例如加载npm全局下的<code>express</code>模块的时候</p>
+<ol start="2">
+<li></li>
+</ol>
+<p><code>PATHD D:\Program Files\nodejs\node_global</code></p>
+<h2 id="3-配置pnpm"><a href="#3-配置pnpm" class="headerlink" title="3.配置pnpm"></a>3.配置pnpm</h2><p>注意此项可以不用配置，在没有配置的情况下会在当前卷的根目录创建<code>node_modules</code>进行管理。</p>
+<p>如果想要pnpm跨磁盘或者卷进行管理可以按如下设置</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pnpm config <span class="hljs-built_in">set</span> store<span class="hljs-literal">-dir</span> /path/to/.pnpm<span class="hljs-literal">-store</span><br></code></pre></td></tr></table></figure>
+
+<p>参考链接：<a target="_blank" rel="noopener" href="https://www.pnpm.cn/configuring%E3%80%81https://www.pnpm.cn/faq#store-path-is-not-specified">https://www.pnpm.cn/configuring、https://www.pnpm.cn/faq#store-path-is-not-specified</a></p>
+<h4 id="4-修改install的镜像源"><a href="#4-修改install的镜像源" class="headerlink" title="4.修改install的镜像源"></a>4.修改install的镜像源</h4><p>这里就是淘宝的，要是用别的请搜索对应uri</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config get registry<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="python-anaconda"><a href="#python-anaconda" class="headerlink" title="python anaconda"></a>python anaconda</h1><h2 id="1-安装anaconda"><a href="#1-安装anaconda" class="headerlink" title="1.安装anaconda"></a>1.安装anaconda</h2><p>大陆用户推荐用清华的源进行安装解决安装包下载过慢的问题</p>
+<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
+<h2 id="2-解决一些典型问题（待补充）"><a href="#2-解决一些典型问题（待补充）" class="headerlink" title="2.解决一些典型问题（待补充）"></a>2.解决一些典型问题（待补充）</h2><h4 id="1-pip-is-configured-with-locations-that-require-TLS-SSL"><a href="#1-pip-is-configured-with-locations-that-require-TLS-SSL" class="headerlink" title="1.[pip is configured with locations that require TLS/SSL]"></a>1.<code>[pip is configured with locations that require TLS/SSL]</code></h4><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45954528/pip-is-configured-with-locations-that-require-tls-ssl-however-the-ssl-module-in">https://stackoverflow.com/questions/45954528/pip-is-configured-with-locations-that-require-tls-ssl-however-the-ssl-module-in</a></p>
+<p>一般我们都会把 python解释器和pip的路径加入环境，但是这里我们也需要加入第三个路径到环境中。（这里需要的原因可能是我在使用anaconda这个发型版本）</p>
+<h2 id="3-修改local-cache"><a href="#3-修改local-cache" class="headerlink" title="3.修改local cache"></a>3.修改local cache</h2><p>下面这篇博文讲述了为什么需要这个cache</p>
+<p><a target="_blank" rel="noopener" href="https://www.techiediaries.com/python-pip-local-cache/">https://www.techiediaries.com/python-pip-local-cache/</a></p>
+<p>配置方法:在<code>%HOME%</code>的<code>pip</code>目录下创建<code>pip.ini</code>（没有目录就自建一个）</p>
+<p>找到<code>%HOME%</code>, 可以在文件资源管理器的路径栏输入<code>homepath</code></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[global]</span><br><span class="hljs-attr">cache-dir</span> = E:/languages/anaconda3/mypip/cache<br><span class="hljs-attr">log-file</span> = E:/languages/anaconda3/mypip/pip.log<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-修改pip安装源"><a href="#4-修改pip安装源" class="headerlink" title="4.修改pip安装源"></a>4.修改pip安装源</h2><p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/">https://mirrors.tuna.tsinghua.edu.cn/help/pypi/</a></p>
+<h4 id="5-检查一下配置情况"><a href="#5-检查一下配置情况" class="headerlink" title="5. 检查一下配置情况"></a>5. 检查一下配置情况</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pip config list<br></code></pre></td></tr></table></figure>
+
+<p><img src="E:\tools\assets\image-20220823141458429.png" srcset="/img/loading.gif" lazyload alt="image-20220823141458429"></p>
+<h1 id="go"><a href="#go" class="headerlink" title="go"></a>go</h1><p>这个就是最为简单的了</p>
+<p>去官网找个安装包跟着官网走就好了：<a target="_blank" rel="noopener" href="https://go.dev/doc/install">https://go.dev/doc/install</a></p>
+<p>安装好之后推荐修改一下<code>GOPATH</code>和<code>GOBIN</code>,目前版本<code> GO111MODULE</code>默认是设为<code>on</code></p>
+<p>小小的看一下<code>GOPATH</code>的目录结构，以及功能：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/88.html">http://c.biancheng.net/view/88.html</a></p>
+<h2 id="1-在（用户环境变量）中修改GOPATH"><a href="#1-在（用户环境变量）中修改GOPATH" class="headerlink" title="1.在（用户环境变量）中修改GOPATH"></a>1.在（用户环境变量）中修改GOPATH</h2><p>把对应的变量改为你自己的目录路径即可</p>
+<h4 id="2-GOBIN"><a href="#2-GOBIN" class="headerlink" title="2.GOBIN"></a>2.GOBIN</h4><p>这个可以不做，我做这个主要是让后期<code>install</code>的文件和<code>bin</code>目录下的开发者工具相隔离</p>
+<h4 id="3-修改GOCACHE"><a href="#3-修改GOCACHE" class="headerlink" title="3.修改GOCACHE"></a>3.修改GOCACHE</h4><p>我也是简单地修改了一下<code>GOCACHE</code>,我是放在<code>GOPATH</code>之下的</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">go env <span class="hljs-literal">-w</span> GOCACHE=yourpath<br></code></pre></td></tr></table></figure>
+
+<h2 id="4-设置代理"><a href="#4-设置代理" class="headerlink" title="4.设置代理"></a>4.设置代理</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1773630">https://cloud.tencent.com/developer/article/1773630</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%B7%A5%E5%85%B7/" class="category-chain-item">工具</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E9%85%8D%E7%BD%AE/">#配置</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>新的篇章</div>
+      <div>http://example.com/2022/08/23/My-new-way/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>sunboyZgz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年8月23日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/24/newblog/" title="新的博客">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">新的博客</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
