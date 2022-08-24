@@ -15,9 +15,7 @@ jobs:
       - name: Install packages
         run: npm install
       - name: Hexo generate public
-        run: npx hexo clean
-        run: npx hexo generate
-
+        run: npx hexo clean && npx hexo generate
   push-public:
     needs: job1  #依赖关系设置
     runs-on: ubuntu-latest
