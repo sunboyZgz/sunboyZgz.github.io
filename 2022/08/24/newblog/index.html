@@ -16,15 +16,15 @@
   <meta name="author" content="sunboyZgz">
   <meta name="keywords" content="technic">
   
-    <meta name="description" content="Github Page-Custom Domain1.原因利用github为每一个用户提供的一个个人站点，进行DNS映射这样就能在剩下服务器的时候进行一些个人项目部署。 Github Action1.原因本质上，这就是github为我们提供的一个CI&#x2F;CD的能力 在hexo生成的blog项目中，我们虽然可以在本地进行generate然后将源代码同步到远程仓库的一个分支，然后再将需要展示的">
+    <meta name="description" content="Github Page-Custom Domain1.原因众所周知github提供了一个github-page的服务，但是有些人很困惑为什么只能部署一个项目，但其实并不是这样的。github-pagesetting中的custom domain能很好的利用这个服务为我们部署多个项目。 本质上是利用github为每一个用户提供的一个个人站点(username.github.io)（相当于提供了静态服">
 <meta property="og:type" content="article">
 <meta property="og:title" content="新的博客">
 <meta property="og:url" content="http://example.com/2022/08/24/newblog/index.html">
 <meta property="og:site_name" content="sun">
-<meta property="og:description" content="Github Page-Custom Domain1.原因利用github为每一个用户提供的一个个人站点，进行DNS映射这样就能在剩下服务器的时候进行一些个人项目部署。 Github Action1.原因本质上，这就是github为我们提供的一个CI&#x2F;CD的能力 在hexo生成的blog项目中，我们虽然可以在本地进行generate然后将源代码同步到远程仓库的一个分支，然后再将需要展示的">
+<meta property="og:description" content="Github Page-Custom Domain1.原因众所周知github提供了一个github-page的服务，但是有些人很困惑为什么只能部署一个项目，但其实并不是这样的。github-pagesetting中的custom domain能很好的利用这个服务为我们部署多个项目。 本质上是利用github为每一个用户提供的一个个人站点(username.github.io)（相当于提供了静态服">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-08-24T14:57:14.000Z">
-<meta property="article:modified_time" content="2022-08-24T11:53:59.208Z">
+<meta property="article:modified_time" content="2022-08-24T12:49:39.066Z">
 <meta property="article:author" content="sunboyZgz">
 <meta property="article:tag" content="配置">
 <meta name="twitter:card" content="summary_large_image">
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          470 字
+          2.3k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          4 分钟
+          20 分钟
         
       </span>
     
@@ -273,12 +273,27 @@
             
               <div class="markdown-body">
                 
-                <h1 id="Github-Page-Custom-Domain"><a href="#Github-Page-Custom-Domain" class="headerlink" title="Github Page-Custom Domain"></a>Github Page-Custom Domain</h1><h2 id="1-原因"><a href="#1-原因" class="headerlink" title="1.原因"></a>1.原因</h2><p>利用<code>github</code>为每一个用户提供的一个个人站点，进行<code>DNS</code>映射这样就能在剩下服务器的时候进行一些个人项目部署。</p>
-<h1 id="Github-Action"><a href="#Github-Action" class="headerlink" title="Github Action"></a>Github Action</h1><h2 id="1-原因-1"><a href="#1-原因-1" class="headerlink" title="1.原因"></a>1.原因</h2><p>本质上，这就是github为我们提供的一个CI&#x2F;CD的能力</p>
+                <h1 id="Github-Page-Custom-Domain"><a href="#Github-Page-Custom-Domain" class="headerlink" title="Github Page-Custom Domain"></a>Github Page-Custom Domain</h1><h2 id="1-原因"><a href="#1-原因" class="headerlink" title="1.原因"></a>1.原因</h2><p>众所周知<code>github</code>提供了一个<code>github-page</code>的服务，但是有些人很困惑为什么只能部署一个项目，但其实并不是这样的。<code>github-page</code>setting中的<code>custom domain</code>能很好的利用这个服务为我们部署多个项目。</p>
+<p>本质上是利用<code>github</code>为每一个用户提供的一个个人站点(<code>username.github.io</code>)（相当于提供了静态服务器已经一个绑定的域名），进行<code>DNS</code>映射这样就能在剩下服务器的时候进行一些个人项目部署。</p>
+<h2 id="2-具体操作"><a href="#2-具体操作" class="headerlink" title="2.具体操作"></a>2.具体操作</h2><h4 id="1-首先我们需要一个域名"><a href="#1-首先我们需要一个域名" class="headerlink" title="1.首先我们需要一个域名"></a>1.首先我们需要一个域名</h4><p>如何获取域名自行解决，我是在阿里收购的域名提供商那边买的</p>
+<h4 id="2-进行域名解析，使username-github-io与你购买的一级域相映射"><a href="#2-进行域名解析，使username-github-io与你购买的一级域相映射" class="headerlink" title="2.进行域名解析，使username.github.io与你购买的一级域相映射"></a>2.进行域名解析，使<code>username.github.io</code>与你购买的一级域相映射</h4><p>这一步我是在阿里云的域名解析里做的，其他方式大同小异</p>
+<p>1.在域名解析里采用CNAME的形式将一个对我自己的域名（zhugezhen.cn)和<code>sunboyzgz.github.io</code></p>
+<p>进行一个映射。</p>
+<p>下一步在<strong>setting</strong>中的<strong>pages</strong>设置中操作</p>
+<p>2.在<strong>Build and deployment</strong>的<strong>source</strong>选项下选择<strong>deploy from a branch</strong>，然后选择你要部署的目录，也就是你希望展示的<code>index.html</code>所存在的目录。不同于<code>deploy from a branch</code>github也为我们提供了一个<strong>github actions</strong>的选择，这里就是后面要讲的<code>github actions</code>。</p>
+<p>3.选择一个<code>custom domain</code>这里就是我们自己购买的域名填入即可</p>
+<p><strong>note</strong>!!: 使用二级域名与<code>custom domain</code>相互映射的方案我们可以部署多个项目，并且这些项目并不需要都在<code>username.github.io</code>这个仓库下, 不过二级域名也是直接映射到<code>username.github.io</code>这个域。</p>
+<p>这里假设我们的生成的二级域名是<code>book.zhugezhen.cn</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-comment">//域名解析中 CNAME形式，当然也可以使用ip的形式</span><br>zhugezhen<span class="hljs-selector-class">.cn</span> -&gt; sunboyzgz<span class="hljs-selector-class">.github</span><span class="hljs-selector-class">.io</span><br>book<span class="hljs-selector-class">.zhugezhen</span><span class="hljs-selector-class">.cn</span> -&gt; sunboyzgz<span class="hljs-selector-class">.github</span><span class="hljs-selector-class">.io</span><br><span class="hljs-comment">//setting pages CNAME</span><br>custom domain save <span class="hljs-selector-tag">a</span> zhugezhen<span class="hljs-selector-class">.cn</span><br>custom domain save <span class="hljs-selector-tag">a</span> book<span class="hljs-selector-class">.zhugezhen</span>.cn<br></code></pre></td></tr></table></figure>
+
+<h1 id="Github-Actions"><a href="#Github-Actions" class="headerlink" title="Github Actions"></a>Github Actions</h1><h2 id="1-原因-1"><a href="#1-原因-1" class="headerlink" title="1.原因"></a>1.原因</h2><p>本质上，这就是github为我们提供的一个CI&#x2F;CD的能力</p>
 <p>在<code>hexo</code>生成的blog项目中，我们虽然可以在本地进行<code>generate</code>然后将源代码同步到远程仓库的一个分支，然后再将需要展示的文件目录推送到另一个分支，但是这样会在每次操作时需要进行很多相同的重复操作。这项工作可以交给其他的工具进行比如<a target="_blank" rel="noopener" href="https://github.com/marketplace/travis-ci">Travis CI</a>，我只是抱着学习的态度想要尝试一下<code>action</code>。</p>
-<h2 id="2"><a href="#2" class="headerlink" title="2."></a>2.</h2><h4 id="3-参考链接"><a href="#3-参考链接" class="headerlink" title="3.参考链接"></a>3.参考链接</h4><p><a target="_blank" rel="noopener" href="https://docs.github.com/cn/actions/learn-github-actions/contexts">https://docs.github.com/cn/actions/learn-github-actions/contexts</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.blog/2022-08-10-github-pages-now-uses-actions-by-default/">https://github.blog/2022-08-10-github-pages-now-uses-actions-by-default/</a></p>
-<p><a target="_blank" rel="noopener" href="https://github.com/jaywcjlove/github-actions">https://github.com/jaywcjlove/github-actions</a></p>
+<h2 id="2-如果你是hexo可以看下去，不是请跳过，直接到参考链接部分找寻答案"><a href="#2-如果你是hexo可以看下去，不是请跳过，直接到参考链接部分找寻答案" class="headerlink" title="2.如果你是hexo可以看下去，不是请跳过，直接到参考链接部分找寻答案"></a>2.如果你是hexo可以看下去，不是请跳过，直接到参考链接部分找寻答案</h2><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">name:</span> <span class="hljs-string">deploy</span> <span class="hljs-string">blog</span> <span class="hljs-string">to</span> <span class="hljs-string">gh-pages</span>  <span class="hljs-comment">#这个是一个workflow name</span><br><span class="hljs-attr">on:</span> <span class="hljs-comment">#监听push的事件</span><br>  <span class="hljs-attr">push:</span><br>    <span class="hljs-attr">branches:</span> <span class="hljs-comment">#对于main分支的push事件进行监听</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-string">main</span><br><span class="hljs-attr">jobs:</span> <span class="hljs-comment">#workflow中的jobs列表，jobs默认并发进行，如需相互依赖参考 need 属性的使用</span><br>  <span class="hljs-attr">generate-public:</span> <span class="hljs-comment">#job name</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span> <span class="hljs-comment">#运行的操作系统</span><br>    <span class="hljs-attr">steps:</span> <span class="hljs-comment">#操作步骤一步一步向下执行</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v3</span> <span class="hljs-comment">#使用checkout action，提供摘取仓库的能力</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Setup</span> <span class="hljs-string">Node.js</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/setup-node@v3</span> <span class="hljs-comment">#一个配置node环境的action</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">node-version:</span> <span class="hljs-number">16</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Install</span> <span class="hljs-string">packages</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">npm</span> <span class="hljs-string">install</span> <span class="hljs-comment">#就像在本地用使用命令行一样</span><br>        <span class="hljs-comment">#这里要说一下，一个name下只能拥有一个run，有时可以像以下这样执行</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Hexo</span> <span class="hljs-string">generate</span> <span class="hljs-string">public</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">npx</span> <span class="hljs-string">hexo</span> <span class="hljs-string">clean</span> <span class="hljs-string">&amp;&amp;</span> <span class="hljs-string">npx</span> <span class="hljs-string">hexo</span> <span class="hljs-string">generate</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Add</span> <span class="hljs-string">CNAME</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">echo</span> <span class="hljs-string">&#x27;zhugezhen.cn&#x27;</span> <span class="hljs-string">&gt;</span> <span class="hljs-string">./public/CNAME</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">deploy</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">peaceiris/actions-gh-pages@v3</span> <span class="hljs-comment">#将目标目录push gh-pages分支的action</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">github_token:</span> <span class="hljs-string">$&#123;&#123;</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">&#125;&#125;</span><br>          <span class="hljs-attr">publish_dir:</span> <span class="hljs-string">./public</span><br></code></pre></td></tr></table></figure>
+
+<p>这个<code>github actions</code>的配置其实就已经代替了<code>hexo</code>文档中<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/github-pages%E7%9A%84%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E%E4%BA%86%E3%80%82">https://hexo.io/zh-cn/docs/github-pages的操作说明了。</a></p>
+<h4 id="3-参考链接"><a href="#3-参考链接" class="headerlink" title="3.参考链接"></a>3.参考链接</h4><p>1.请先了解github actions:<a target="_blank" rel="noopener" href="https://docs.github.com/cn/actions/learn-github-actions/understanding-github-actions">https://docs.github.com/cn/actions/learn-github-actions/understanding-github-actions</a></p>
+<p>2.可以看看这里面的基本使用：<a target="_blank" rel="noopener" href="https://github.com/jaywcjlove/github-actions">https://github.com/jaywcjlove/github-actions</a></p>
+<p>3.这个不重要随便看看就好：<a target="_blank" rel="noopener" href="https://github.blog/2022-08-10-github-pages-now-uses-actions-by-default/">https://github.blog/2022-08-10-github-pages-now-uses-actions-by-default/</a></p>
 
                 
               </div>
