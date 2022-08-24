@@ -24,3 +24,13 @@ categories: 工具
 在`hexo`生成的blog项目中，我们虽然可以在本地进行`generate`然后将源代码同步到远程仓库的一个分支，然后再将需要展示的文件目录推送到另一个分支，但是这样会在每次操作时需要进行很多相同的重复操作。这项工作可以交给其他的工具进行比如[Travis CI](https://github.com/marketplace/travis-ci)，我只是抱着学习的态度想要尝试一下`action`。
 
 ## 2.
+
+
+
+#### 3.参考链接
+
+https://docs.github.com/cn/actions/learn-github-actions/contexts
+
+https://github.blog/2022-08-10-github-pages-now-uses-actions-by-default/
+
+https://github.com/jaywcjlove/github-actions

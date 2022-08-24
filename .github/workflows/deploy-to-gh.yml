@@ -1,15 +1,31 @@
-# name: deploy blog to gh-page
-# on: 
-#   push:
-#     branches:
-#       - main
-# jobs:
-#   generate-public:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
-#       - name: setup Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: '12.x'
-#   push-public:
+name: deploy blog to gh-pages
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  generate-public:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install packages
+        run: npm install
+      - name: Hexo generate public
+        run: npx hexo clean
+        run: npx hexo generate
+
+  push-public:
+    needs: job1  #依赖关系设置
+    runs-on: ubuntu-latest
+    steps:
+      - name: Add CNAME
+        run: echo 'zhugezhen.cn' > ./public
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
