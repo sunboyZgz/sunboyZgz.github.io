@@ -18,7 +18,6 @@ jobs:
         run: npx hexo clean && npx hexo generate
   push-public:
     needs: generate-public  #依赖关系设置
-    runs-on: ubuntu-latest
     steps:
       - name: Add CNAME
         run: echo 'zhugezhen.cn' > /public/CNAME
