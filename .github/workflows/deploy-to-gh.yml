@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add CNAME
-        run: echo 'zhugezhen.cn' > ./public
+        run: echo 'zhugezhen.cn' > ./public/CNAME
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
