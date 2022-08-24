@@ -16,11 +16,8 @@ jobs:
         run: npm install
       - name: Hexo generate public
         run: npx hexo clean && npx hexo generate
-  push-public:
-    needs: generate-public  #依赖关系设置
-    steps:
       - name: Add CNAME
-        run: echo 'zhugezhen.cn' > /public/CNAME
+        run: echo 'zhugezhen.cn' > ./public/CNAME
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
