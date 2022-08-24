@@ -23,6 +23,6 @@
     "hexo-server": "^3.0.0",
     "hexo-theme-fluid": "^1.9.2",
     "hexo-theme-landscape": "^0.0.3",
-    "nunjucks": "3.0.0"
+    "nunjucks": "3.2.3"
   }
 }
