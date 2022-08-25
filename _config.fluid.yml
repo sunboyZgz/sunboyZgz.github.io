@@ -18,15 +18,15 @@
 
 # 用于浏览器标签的图标
 # Icon for browser tab
-favicon: /img/fluid.png
+favicon: /img/favicon.png
 
 # 用于苹果设备的图标
 # Icon for Apple touch
-apple_touch_icon: /img/fluid.png
+apple_touch_icon: /img/favicon.png
 
 # 浏览器标签页中的标题分隔符，效果： 文章名 - 站点名
 # Title separator in browser tab, eg: article - site
-tab_title_separator: " - "
+tab_title_separator: " 😄 "
 
 # 强制所有链接升级为 HTTPS（适用于图片等资源出现 HTTP 混入报错）
 # Force all links to be HTTPS (applicable to HTTP mixed error)
@@ -91,7 +91,7 @@ fun_features:
 
     # 游标字符
     # Cursor character
-    cursorChar: "_"
+    cursorChar: ".."
 
     # 是否循环播放效果
     # If true, loop animation
@@ -112,7 +112,7 @@ fun_features:
     # Options: hover | always | touch
     visible: hover
     # Options: § | # | ❡
-    icon: ""
+    icon: "§"
 
   # 加载进度条
   # Progress bar when loading
@@ -121,7 +121,7 @@ fun_features:
     height_px: 3
     color: "#29d"
     # See: https://github.com/rstacruz/nprogress
-    options: { showSpinner: false, trickleSpeed: 100 }
+    options: { showSpinner: true, trickleSpeed: 100 }
 
 # 主题暗色模式，开启后菜单中会出现切换按钮，用户浏览器会存储切换选项，并且会遵循 prefers-color-scheme 自动切换
 # Theme dark mode. If enable, a switch button will appear on the menu, each of the visitor's browser will store his switch option
@@ -138,7 +138,7 @@ dark_mode:
 color:
   # body 背景色
   # Color of body background
-  body_bg_color: "#eee"
+  body_bg_color: "#bfc6d959"
   # 暗色模式下的 body 背景色，下同
   # Color in dark mode, the same below
   body_bg_color_dark: "#181c27"
@@ -309,7 +309,7 @@ lazyload:
 
   # 触发加载的偏移倍数，基数是视窗高度，可根据部署环境的请求速度调节
   # The factor of viewport height that triggers loading
-  offset_factor: 2
+  offset_factor: 1
 
 # 图标库，包含了大量社交类图标，主题依赖的不包含在内，因此可自行修改，详见 https://hexo.fluid-dev.com/docs/icon/
 # Icon library, which includes many social icons, does not include those theme dependent, so your can modify link by yourself. See: https://hexo.fluid-dev.com/docs/en/icon/
@@ -326,12 +326,12 @@ iconfont: //at.alicdn.com/t/font_1736178_lbnruvf0jn.css
 navbar:
   # 导航栏左侧的标题，为空则按 hexo config 中 `title` 显示
   # The title on the left side of the navigation bar. If empty, it is based on `title` in hexo config
-  blog_title: "Fluid"
+  blog_title: "2G World"
 
   # 导航栏毛玻璃特效，实验性功能，可能会造成页面滚动掉帧和抖动，部分浏览器不支持会自动不生效
   # Navigation bar frosted glass special animation. It is an experimental feature
   ground_glass:
-    enable: false
+    enable: true
 
     # 模糊像素，只能为数字，数字越大模糊度越高
     # Number of blurred pixel. the larger the number, the higher the blur
@@ -350,8 +350,7 @@ navbar:
     - { key: "category", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "tag", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
-    #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
-
+    - { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 # 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
 # Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
 search:
@@ -424,8 +423,9 @@ footer:
   # 页脚第一行文字的 HTML，建议保留 Fluid 的链接，用于向更多人推广本主题
   # HTML of the first line of the footer, it is recommended to keep the Fluid link to promote this theme to more people
   content: '
-    <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-    <i class="iconfont icon-love"></i>
+    <a href="https://github.com/sunboyZgz" target="_blank" rel="nofollow noopener"><span>Github</span></a>
+    <!--<i class="iconfont icon-love" style="color: red"></i>-->
+    <span>❤️</span>
     <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
   '
 
@@ -460,7 +460,7 @@ footer:
 index:
   # 首页 Banner 头图，可以是相对路径或绝对路径，以下相同
   # Path of Banner image, can be a relative path or an absolute path, the same on other pages
-  banner_img: /img/default.png
+  banner_img: https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/blog-config/default.jpg
 
   # 头图高度，屏幕百分比
   # Height ratio of banner image
@@ -470,7 +470,7 @@ index:
   # 头图黑色蒙版的不透明度，available: 0 - 1.0， 1 是完全不透明
   # Opacity of the banner mask, 1.0 is completely opaque
   # Available: 0 - 1.0
-  banner_mask_alpha: 0.3
+  banner_mask_alpha: 0.5
 
   # 首页副标题的独立设置
   # Independent config of home page subtitle
@@ -479,7 +479,7 @@ index:
 
     # 为空则按 hexo config.subtitle 显示
     # If empty, text based on `subtitle` in hexo config
-    text: "An elegant Material-Design theme for Hexo"
+    text: "欢迎来到2G少年的世界"
 
     # 通过 API 接口作为首页副标题的内容，必须返回的是 JSON 格式，如果请求失败则按 text 字段显示，该功能必须先开启 typing 打字机功能
     # Subtitle of the homepage through the API, must be returned a JSON. If the request fails, it will be displayed in `text` value. This feature must first enable the typing animation
@@ -532,7 +532,7 @@ index:
 # Post Page
 #---------------------------
 post:
-  banner_img: /img/default.png
+  banner_img: https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/blog-config/default.jpg
   banner_img_height: 70
   banner_mask_alpha: 0.3
 
@@ -576,7 +576,7 @@ post:
     # 浏览量计数
     # Number of visits
     views:
-      enable: false
+      enable: true
       # 统计数据来源
       # Data Source
       # Options: busuanzi | leancloud
@@ -585,7 +585,7 @@ post:
   # 在文章开头显示文章更新时间，该时间默认是 md 文件更新时间，可通过 front-matter 中 `updated` 手动指定（和 date 一样格式）
   # Update date is displayed at the beginning of the post. The default date is the update date of the md file, which can be manually specified by `updated` in front-matter (same format as date)
   updated:
-    enable: false
+    enable: true
 
     # 格式参照 ISO-8601 日期格式化
     # ISO-8601 date format
@@ -594,7 +594,7 @@ post:
 
     # 是否使用相对时间表示，比如："3 天前"
     # If true, it will be a relative time, such as: "3 days ago"
-    relative: false
+    relative: true
 
     # 提示标签类型
     # Note class
@@ -608,7 +608,7 @@ post:
 
     # 开启后，只有在文章 Front-matter 里指定 `category_bar: true` 才会展示分类，也可以通过 `category_bar: ["分类A"]` 来指定分类
     # If true, only set `category_bar: true` in Front-matter will enable sidebar of category, also set `category_bar: ["CategoryA"]` to specify categories
-    specific: true
+    specific: false
 
     # 置于板块的左侧或右侧
     # place in the board
@@ -618,7 +618,7 @@ post:
     # 文章的排序字段，前面带减号是倒序，不带减号是正序
     # Sort field for posts, with a minus sign is reverse order
     # Options: date | title | or other field of front-matter
-    post_order_by: "title"
+    post_order_by: "date"
 
     # 单个分类中折叠展示文章数的最大值，超过限制会显示 More，0 则不限制
     # The maximum number of posts in a single category. If the limit is exceeded, it will be displayed More. If 0 no limit
@@ -886,7 +886,7 @@ giscus:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: /img/default.png
+  banner_img: https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/blog-config/default.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -897,7 +897,7 @@ archive:
 #---------------------------
 category:
   enable: true
-  banner_img: /img/default.png
+  banner_img: https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/blog-config/default.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -926,7 +926,7 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: /img/default.png
+  banner_img: https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/blog-config/default.jpg
   banner_img_height: 80
   banner_mask_alpha: 0.3
   tagcloud:
@@ -943,18 +943,25 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: /img/default.png
+  banner_img: https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/blog-config/about.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
-  avatar: /img/avatar.png
-  name: "Fluid"
-  intro: "An elegant theme for Hexo"
+  avatar: /img/avatar.jpg
+  name: "sunboyZgz"
+  # intro: "I'm a 2g youngster, loving ACG, I also like some novels which relate to animes"
+  intro: "虽然在将来我应该会成为一名码农，但是我常常被其他人称为2g少年，主要原因是我常常跟不上一些网络上流行的梗。我也是一个二次元，喜欢ACG，有时也会为了一些ACG桥段去阅读相应的小说(N)，我应该也算是一个ACG[N]爱好者吧？但我绝对不是那种长篇爽文的爱好者！曾经不喜欢数学，现在又因为编程时的探索对数学、物理都充满了浓厚的兴趣。"
   # 更多图标可从 https://hexo.fluid-dev.com/docs/icon/ 查找，`class` 代表图标的 css class，添加 `qrcode` 后，图标不再是链接而是悬浮二维码
   # More icons can be found from https://hexo.fluid-dev.com/docs/en/icon/  `class` is the css class of the icon. If adding `qrcode`, The icon is no longer a link, but a hovering QR code
   icons:
     - { class: "iconfont icon-github-fill", link: "https://github.com/sunboyZgz", tip: "GitHub" }
+    - { class: "iconfont icon-twitter-fill", link: "https://twitter.com/sunboy_zgz", tip: "twitter" }
     - { class: "iconfont icon-wechat-fill", qrcode: "/img/wechat.jpg" }
+  slogan:
+    enable: true
 
+    # 为空则按 hexo config.subtitle 显示
+    # If empty, text based on `subtitle` in hexo config
+    text: "我的世界"
 
 #---------------------------
 # 自定义页
@@ -964,7 +971,7 @@ about:
 # Custom Page through `hexo new page`
 #---------------------------
 page:
-  banner_img: /img/default.png
+  banner_img: /img/default.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -975,7 +982,7 @@ page:
 #---------------------------
 page404:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/default.jpg
   banner_img_height: 85
   banner_mask_alpha: 0.3
   # 重定向到首页的延迟(毫秒)
@@ -989,34 +996,26 @@ page404:
 #---------------------------
 links:
   enable: true
-  banner_img: /img/default.png
+  banner_img: /img/friend.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   # 友链的成员项
   # Member item of page
   items:
     - {
-      title: "Fluid Blog",
-      intro: "主题博客",
-      link: "https://hexo.fluid-dev.com/",
+      title: "old Blog",
+      intro: "博客旧文(我的)",
+      link: "http://blog.zhugezhen.cn/",
       avatar: "/img/favicon.png"
     }
     - {
-      title: "Fluid Docs",
-      intro: "主题使用指南",
-      link: "https://hexo.fluid-dev.com/docs/",
-      avatar: "/img/favicon.png"
+      title: "boythink",
+      intro: "一个逗逼的blog",
+      link: "https://summer-boythink.github.io/hexo-blog/",
     }
-    - {
-      title: "Fluid Repo",
-      intro: "主题 GitHub 仓库",
-      link: "https://github.com/fluid-dev/hexo-theme-fluid",
-      avatar: "/img/favicon.png"
-    }
-
   # 当成员头像加载失败时，替换为指定图片
   # When the member avatar fails to load, replace the specified image
-  onerror_avatar: /img/avatar.png
+  onerror_avatar: /img/avatare.png
 
   # 友链下方自定义区域，支持 HTML，可插入例如申请友链的文字
   # Custom content at the bottom of the links
