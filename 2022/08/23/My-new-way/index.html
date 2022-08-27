@@ -23,14 +23,14 @@
 <meta property="og:site_name" content="sunboy">
 <meta property="og:description" content="为什么会有这篇文章？由于最近c盘紧张，我重装了一次系统同进行了一些卷容量的调整，因为最近没有怎么写过blog在进行格式化的时候将原来搭建的个人blog给清除了而且也没有做备份，git page上传的也只是一个经过处理后的html文件，所以我原来的blog文件都丢失了。因为我需要进行一些环境配置，所以写下了这篇文章。 nodejs + npm + pnpm 配置1.windows 下安装nodejs">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="e:/tools/assets/image-20220823141458429.png">
-<meta property="og:image" content="e:/blog/sunboy/source_posts/assets/image-20220827185106780.png">
+<meta property="og:image" content="http://example.com/image-20220823141458429.png">
+<meta property="og:image" content="http://example.com/image-20220827185106780.png">
 <meta property="article:published_time" content="2022-08-23T21:39:31.000Z">
-<meta property="article:modified_time" content="2022-08-27T13:42:06.859Z">
+<meta property="article:modified_time" content="2022-08-27T14:04:47.662Z">
 <meta property="article:author" content="sunboyZgz">
 <meta property="article:tag" content="配置">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="e:/tools/assets/image-20220823141458429.png">
+<meta name="twitter:image" content="http://example.com/image-20220823141458429.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.5k 字
+          2.4k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
         
-          21 分钟
+          20 分钟
         
       </span>
     
@@ -411,12 +411,12 @@
 <h2 id="4-修改pip安装源"><a href="#4-修改pip安装源" class="headerlink" title="4.修改pip安装源"></a>4.修改pip安装源</h2><p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/">https://mirrors.tuna.tsinghua.edu.cn/help/pypi/</a></p>
 <h4 id="5-检查一下配置情况"><a href="#5-检查一下配置情况" class="headerlink" title="5. 检查一下配置情况"></a>5. 检查一下配置情况</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pip config list<br></code></pre></td></tr></table></figure>
 
-<p><img src="E:\tools\assets\image-20220823141458429.png" srcset="/img/loading.gif" lazyload alt="image-20220823141458429"></p>
+<p><img src="/image-20220823141458429.png" srcset="/img/loading.gif" lazyload alt="result image"></p>
 <h2 id="6-2022-x2F-8-x2F-27补充"><a href="#6-2022-x2F-8-x2F-27补充" class="headerlink" title="6. 2022&#x2F;8&#x2F;27补充:"></a>6. 2022&#x2F;8&#x2F;27补充:</h2><p>error:</p>
 <blockquote>
 <p>solving environment: failed with intitial frozen solve.Retrying with flexible solve.</p>
 </blockquote>
-<p><img src="E:\blog\sunboy\source_posts\assets\image-20220827185106780.png" srcset="/img/loading.gif" lazyload alt="image-20220827185106780"></p>
+<p><img src="/image-20220827185106780.png" srcset="/img/loading.gif" lazyload alt="error image"></p>
 <h4 id="方案一：直面困难"><a href="#方案一：直面困难" class="headerlink" title="方案一：直面困难"></a>方案一：直面困难</h4><p>1.修改<code>conda</code>安装的镜像源为后续操作提速</p>
 <p>具体修改方案可以参考清华提供的方案<code>.condarc</code></p>
 <p>windows下使用命令生成在<code>%home%</code>目录下生成</p>
@@ -424,9 +424,22 @@
 
 <p>然后将下方链接的中的配置复制到<code>.condarc</code>中</p>
 <p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/</a></p>
-<ol start="2">
-<li>&#96;&#96;&#96;powershell<br>conda update –all<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs clean"><br>#### 方案二：曲线救国<br><br>使用pip install 安装，但是这样的话不能享受到conda create env带来的好处。但是真的简单。<br><br>#### 方案三：降级conda策略<br><br>网上自搜<br><br># go<br><br>这个就是最为简单的了<br><br>去官网找个安装包跟着官网走就好了：https:<span class="hljs-comment">//go.dev/doc/install</span><br><br>安装好之后推荐修改一下`GOPATH`和`GOBIN`,目前版本` GO111MODULE`默认是设为`on`<br><br>小小的看一下`GOPATH`的目录结构，以及功能：http:<span class="hljs-comment">//c.biancheng.net/view/88.html</span><br><br>## <span class="hljs-number">1.</span>在（用户环境变量）中修改GOPATH<br><br>把对应的变量改为你自己的目录路径即可<br><br>#### <span class="hljs-number">2.</span>GOBIN<br><br>这个可以不做，我做这个主要是让后期`install`的文件和`bin`目录下的开发者工具相隔离<br><br>#### <span class="hljs-number">3.</span>修改GOCACHE<br><br>我也是简单地修改了一下`GOCACHE`,我是放在`GOPATH`之下的<br><br>```powershell<br>go env -w GOCACHE=yourpath<br></code></pre></td></tr></table></figure></li>
-</ol>
+<p>2. </p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda update <span class="hljs-literal">-all</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="方案二：曲线救国"><a href="#方案二：曲线救国" class="headerlink" title="方案二：曲线救国"></a>方案二：曲线救国</h4><p>使用pip install 安装，但是这样的话不能享受到conda create env带来的好处。但是真的简单。</p>
+<h4 id="方案三：降级conda策略"><a href="#方案三：降级conda策略" class="headerlink" title="方案三：降级conda策略"></a>方案三：降级conda策略</h4><p>网上自搜</p>
+<h1 id="go"><a href="#go" class="headerlink" title="go"></a>go</h1><p>这个就是最为简单的了</p>
+<p>去官网找个安装包跟着官网走就好了：<a target="_blank" rel="noopener" href="https://go.dev/doc/install">https://go.dev/doc/install</a></p>
+<p>安装好之后推荐修改一下<code>GOPATH</code>和<code>GOBIN</code>,目前版本<code> GO111MODULE</code>默认是设为<code>on</code></p>
+<p>小小的看一下<code>GOPATH</code>的目录结构，以及功能：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/88.html">http://c.biancheng.net/view/88.html</a></p>
+<h2 id="1-在（用户环境变量）中修改GOPATH"><a href="#1-在（用户环境变量）中修改GOPATH" class="headerlink" title="1.在（用户环境变量）中修改GOPATH"></a>1.在（用户环境变量）中修改GOPATH</h2><p>把对应的变量改为你自己的目录路径即可</p>
+<h4 id="2-GOBIN"><a href="#2-GOBIN" class="headerlink" title="2.GOBIN"></a>2.GOBIN</h4><p>这个可以不做，我做这个主要是让后期<code>install</code>的文件和<code>bin</code>目录下的开发者工具相隔离</p>
+<h4 id="3-修改GOCACHE"><a href="#3-修改GOCACHE" class="headerlink" title="3.修改GOCACHE"></a>3.修改GOCACHE</h4><p>我也是简单地修改了一下<code>GOCACHE</code>,我是放在<code>GOPATH</code>之下的</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">go env <span class="hljs-literal">-w</span> GOCACHE=yourpath<br></code></pre></td></tr></table></figure>
+
 <h2 id="4-设置代理"><a href="#4-设置代理" class="headerlink" title="4.设置代理"></a>4.设置代理</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1773630">https://cloud.tencent.com/developer/article/1773630</a></p>
 
                 
