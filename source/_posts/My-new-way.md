@@ -115,6 +115,42 @@ pip config list
 
 ![image-20220823141458429](E:\tools\assets\image-20220823141458429.png)
 
+## 6. 2022/8/27补充:
+
+error:
+
+> solving environment: failed with intitial frozen solve.Retrying with flexible solve.
+
+![image-20220827185106780](E:\blog\sunboy\source\_posts\assets\image-20220827185106780.png)
+
+#### 方案一：直面困难
+
+1.修改`conda`安装的镜像源为后续操作提速
+
+具体修改方案可以参考清华提供的方案`.condarc`
+
+windows下使用命令生成在`%home%`目录下生成
+
+```powershell
+conda config --set show_channel_urls yes
+```
+
+然后将下方链接的中的配置复制到`.condarc`中
+
+https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/
+
+2. ```powershell
+   conda update --all
+   ```
+
+#### 方案二：曲线救国
+
+使用pip install 安装，但是这样的话不能享受到conda create env带来的好处。但是真的简单。
+
+#### 方案三：降级conda策略
+
+网上自搜
+
 # go
 
 这个就是最为简单的了
