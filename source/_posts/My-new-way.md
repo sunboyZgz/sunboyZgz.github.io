@@ -113,7 +113,7 @@ https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
 pip config list
 ```
 
-![image-20220823141458429](E:\tools\assets\image-20220823141458429.png)
+![result image](image-20220823141458429.png)
 
 ## 6. 2022/8/27补充:
 
@@ -121,7 +121,7 @@ error:
 
 > solving environment: failed with intitial frozen solve.Retrying with flexible solve.
 
-![image-20220827185106780](E:\blog\sunboy\source\_posts\assets\image-20220827185106780.png)
+![error image](image-20220827185106780.png)
 
 #### 方案一：直面困难
 
@@ -139,9 +139,13 @@ conda config --set show_channel_urls yes
 
 https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/
 
-2. ```powershell
-   conda update --all
-   ```
+2. 
+
+```powershell
+conda update -all
+```
+
+
 
 #### 方案二：曲线救国
 
