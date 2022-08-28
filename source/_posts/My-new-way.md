@@ -184,3 +184,7 @@ go env -w GOCACHE=yourpath
 ## 4.设置代理
 
 https://cloud.tencent.com/developer/article/1773630
+
+##### 
+
+请忽略以下内容，仅仅为了测试 update blog 时间的配置

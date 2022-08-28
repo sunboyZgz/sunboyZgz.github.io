@@ -1,5 +1,5 @@
 name: deploy blog to gh-pages
-on: 
+on:
   push:
     branches:
       - main
@@ -15,11 +15,13 @@ jobs:
       - name: Install packages
         run: npm install
       - name: Hexo generate public
-        run: npx hexo clean && npx hexo generate
+        run: npx hexo generate
       - name: Add CNAME
-        run: echo 'zhugezhen.cn' > ./public/CNAME
+        # run: echo 'zhugezhen.cn' > ./public/CNAME deleted and use action's option
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          cname: zhugezhen.cn
+          keep_files: true
