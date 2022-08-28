@@ -16,8 +16,8 @@ jobs:
         run: npm install
       - name: Hexo generate public
         run: npx hexo generate
-      - name: Add CNAME
-        # run: echo 'zhugezhen.cn' > ./public/CNAME deleted and use action's option
+      # - name: Add CNAME
+      # run: echo 'zhugezhen.cn' > ./public/CNAME deleted and use action's option
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
