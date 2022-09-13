@@ -13,7 +13,7 @@ categories: 工具
 
 https://nodejs.org/en/
 
-按照步骤安卓即可，注意一下nodejs的安装目录即可
+按照步骤安装即可，注意一下nodejs的安装目录即可
 
 ## 2.配置npm
 
