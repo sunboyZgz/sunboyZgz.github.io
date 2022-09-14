@@ -956,6 +956,7 @@ about:
     - { class: "iconfont icon-github-fill", link: "https://github.com/sunboyZgz", tip: "GitHub" }
     - { class: "iconfont icon-twitter-fill", link: "https://twitter.com/sunboy_zgz", tip: "twitter" }
     - { class: "iconfont icon-wechat-fill", qrcode: "/img/wechat.jpg" }
+    - { class: "iconfont icon-wechat2-fill", qrcode: "/img/wechat2.png" }
   slogan:
     enable: true
 

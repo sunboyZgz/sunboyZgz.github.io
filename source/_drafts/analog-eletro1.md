@@ -86,5 +86,5 @@ P（Positive）型半导体：携带更高浓度正电荷的半导体
 
 扩散运动与复合会持续加大耗尽层的空间，而内电场会因此逐渐增大阻挡（因为耗尽层变大了，需要扩散的距离变远了），与之对应漂移会让耗尽层缩小。到最后耗尽层达到一种动态平衡，这就是PN结的产生
 
-![演示文稿1](E:\blog\sunboy\source\_drafts\analog-eletro1\演示文稿1.gif)
+![演示文稿1](E:\blog\sunboy\source\_drafts\analog-eletro1\演示文稿1-1662730625656.gif)
 
