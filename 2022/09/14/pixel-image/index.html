@@ -16,27 +16,26 @@
   <meta name="author" content="sunboyZgz">
   <meta name="keywords" content="technic">
   
-    <meta name="description" content="为什么会有这篇文章？由于最近c盘紧张，我重装了一次系统同进行了一些卷容量的调整，因为最近没有怎么写过blog在进行格式化的时候将原来搭建的个人blog给清除了而且也没有做备份，git page上传的也只是一个经过处理后的html文件，所以我原来的blog文件都丢失了。因为我需要进行一些环境配置，所以写下了这篇文章。 nodejs + npm + pnpm 配置1.windows 下安装nodejs">
+    <meta name="description" content="像素化一张图片1.为什么我会想要一种像素风格的图片因为我前段时间想要DIY一个便携的显示器，直接一个面板+驱动的方案看上去不但造型不行，而且不易携带。于是我就在网上搜索，我发现了可自定义化程度最高的就是面板+驱动+微积木方案了，但是自定义的像素风格图片去哪找呢，于是我就想要一个这样的效果。 2.如何实现这边我采用的是在浏览器这个平台进行操作，一个原因是使用其他语言我需要去学习对应的库，第二个就是在">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新的篇章">
-<meta property="og:url" content="http://example.com/2022/08/23/My-new-way/index.html">
+<meta property="og:title" content="图片像素化">
+<meta property="og:url" content="http://example.com/2022/09/14/pixel-image/index.html">
 <meta property="og:site_name" content="sunboy">
-<meta property="og:description" content="为什么会有这篇文章？由于最近c盘紧张，我重装了一次系统同进行了一些卷容量的调整，因为最近没有怎么写过blog在进行格式化的时候将原来搭建的个人blog给清除了而且也没有做备份，git page上传的也只是一个经过处理后的html文件，所以我原来的blog文件都丢失了。因为我需要进行一些环境配置，所以写下了这篇文章。 nodejs + npm + pnpm 配置1.windows 下安装nodejs">
+<meta property="og:description" content="像素化一张图片1.为什么我会想要一种像素风格的图片因为我前段时间想要DIY一个便携的显示器，直接一个面板+驱动的方案看上去不但造型不行，而且不易携带。于是我就在网上搜索，我发现了可自定义化程度最高的就是面板+驱动+微积木方案了，但是自定义的像素风格图片去哪找呢，于是我就想要一个这样的效果。 2.如何实现这边我采用的是在浏览器这个平台进行操作，一个原因是使用其他语言我需要去学习对应的库，第二个就是在">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/08/23/My-new-way/image-20220823141458429.png">
-<meta property="og:image" content="http://example.com/2022/08/23/My-new-way/image-20220827185106780.png">
-<meta property="article:published_time" content="2022-08-23T21:39:31.000Z">
-<meta property="article:modified_time" content="2022-09-14T05:35:43.182Z">
+<meta property="og:image" content="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-cover/pixel-image.jpg">
+<meta property="article:published_time" content="2022-09-14T10:24:26.000Z">
+<meta property="article:modified_time" content="2022-09-14T05:35:43.186Z">
 <meta property="article:author" content="sunboyZgz">
-<meta property="article:tag" content="配置">
+<meta property="article:tag" content="图像">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/08/23/My-new-way/image-20220823141458429.png">
+<meta name="twitter:image" content="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-cover/pixel-image.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>新的篇章 😄 sunboy</title>
+  <title>图片像素化 😄 sunboy</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +212,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="新的篇章"></span>
+            <span id="subtitle" data-typed-text="图片像素化"></span>
           
         </div>
 
@@ -224,8 +223,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-23 21:39" pubdate>
-          2022年8月23日 晚上
+        <time datetime="2022-09-14 10:24" pubdate>
+          2022年9月14日 上午
         </time>
       </span>
     
@@ -236,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          1.1k 字
         
       </span>
     
@@ -247,7 +246,7 @@
         
         
         
-          20 分钟
+          10 分钟
         
       </span>
     
@@ -300,17 +299,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="工具"
-        id="heading-20dce2c6fa909a5cd62526615fe2788a" role="tab" data-toggle="collapse" href="#collapse-20dce2c6fa909a5cd62526615fe2788a"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="code"
+        id="heading-c13367945d5d4c91047b3b50234aa7ab" role="tab" data-toggle="collapse" href="#collapse-c13367945d5d4c91047b3b50234aa7ab"
         aria-expanded="true"
       >
-        工具
-        <span class="list-group-count">(2)</span>
+        code
+        <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-20dce2c6fa909a5cd62526615fe2788a"
-           role="tabpanel" aria-labelledby="heading-20dce2c6fa909a5cd62526615fe2788a">
+      <div class="category-collapse collapse show" id="collapse-c13367945d5d4c91047b3b50234aa7ab"
+           role="tabpanel" aria-labelledby="heading-c13367945d5d4c91047b3b50234aa7ab">
         
         
           
@@ -319,19 +318,10 @@
     
       
       
-        <a href="/2022/08/23/My-new-way/" title="新的篇章"
+        <a href="/2022/09/14/pixel-image/" title="图片像素化"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">新的篇章</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/08/24/newblog/" title="新的博客"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">新的博客</span>
+          <span class="category-post">图片像素化</span>
         </a>
       
     
@@ -354,85 +344,31 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">新的篇章</h1>
+            <h1 style="display: none">图片像素化</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="为什么会有这篇文章？"><a href="#为什么会有这篇文章？" class="headerlink" title="为什么会有这篇文章？"></a>为什么会有这篇文章？</h1><p>由于最近c盘紧张，我重装了一次系统同进行了一些卷容量的调整，因为最近没有怎么写过blog在进行格式化的时候将原来搭建的个人blog给清除了而且也没有做备份，git page上传的也只是一个经过处理后的html文件，所以我原来的blog文件都丢失了。因为我需要进行一些环境配置，所以写下了这篇文章。</p>
-<h1 id="nodejs-npm-pnpm-配置"><a href="#nodejs-npm-pnpm-配置" class="headerlink" title="nodejs + npm + pnpm 配置"></a>nodejs + npm + pnpm 配置</h1><h2 id="1-windows-下安装nodejs"><a href="#1-windows-下安装nodejs" class="headerlink" title="1.windows 下安装nodejs"></a>1.windows 下安装nodejs</h2><p><a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a></p>
-<p>按照步骤安装即可，注意一下nodejs的安装目录即可</p>
-<h2 id="2-配置npm"><a href="#2-配置npm" class="headerlink" title="2.配置npm"></a>2.配置npm</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config get prefix<br></code></pre></td></tr></table></figure>
-
-<p>这条命令可以直接获取你的全局安装路径的前缀,这个前缀会用于</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm install <span class="hljs-literal">-g</span> xxxx<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config <span class="hljs-built_in">set</span> prefix <span class="hljs-string">&quot;D:\Program Files\nodejs\node_global&quot;</span><br><br>npm config <span class="hljs-built_in">set</span> cache <span class="hljs-string">&quot;D:\Program Files\nodejs\node_cache&quot;</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><ol>
-<li></li>
+                <h1 id="像素化一张图片"><a href="#像素化一张图片" class="headerlink" title="像素化一张图片"></a>像素化一张图片</h1><h2 id="1-为什么我会想要一种像素风格的图片"><a href="#1-为什么我会想要一种像素风格的图片" class="headerlink" title="1.为什么我会想要一种像素风格的图片"></a>1.为什么我会想要一种像素风格的图片</h2><p>因为我前段时间想要DIY一个便携的显示器，直接一个面板+驱动的方案看上去不但造型不行，而且不易携带。于是我就在网上搜索，我发现了可自定义化程度最高的就是面板+驱动+微积木方案了，但是自定义的像素风格图片去哪找呢，于是我就想要一个这样的效果。</p>
+<h2 id="2-如何实现"><a href="#2-如何实现" class="headerlink" title="2.如何实现"></a>2.如何实现</h2><p>这边我采用的是在浏览器这个平台进行操作，一个原因是使用其他语言我需要去学习对应的库，第二个就是在浏览器这个平台上我能够更快地得到反馈。</p>
+<h4 id="1-关于屏幕上的像素点"><a href="#1-关于屏幕上的像素点" class="headerlink" title="1.关于屏幕上的像素点"></a>1.关于屏幕上的像素点</h4><p>通过分辨率的设定，我们可以在屏幕上划分出不同的行、列可显示的像素数，比如同样的<code>300 * 300</code></p>
+<p>像素的图片在，<code>2560 * 1440</code> 和 <code>1920 * 1080</code>的分辨率下默认的显示大小是不同，这种时候屏幕一格的像素大小就产生了差异。</p>
+<h4 id="2-曾经与现在"><a href="#2-曾经与现在" class="headerlink" title="2.曾经与现在"></a>2.曾经与现在</h4><p>现在的屏幕往往在最低的分辨率下，屏幕划分好的一个像素点也比以前的屏幕要小了不知道多少倍，目前我们可以假设：一个曾经的像素点 &#x3D; 一个现在的像素点 * 9 * 9。</p>
+<h4 id="3-屏幕展示像素数量多的好处"><a href="#3-屏幕展示像素数量多的好处" class="headerlink" title="3.屏幕展示像素数量多的好处"></a>3.屏幕展示像素数量多的好处</h4><p>显而易见，像素数就是一个区域色彩展示的层度，更多的像素数可以体现出更加细节的处理。因为像素是方格的，越小的像素点可以是的方格与方格之间过渡更加的平滑。整体的细节处理就更加优秀。</p>
+<h4 id="4-关于我们使用操作系统放大图片"><a href="#4-关于我们使用操作系统放大图片" class="headerlink" title="4.关于我们使用操作系统放大图片"></a>4.关于我们使用操作系统放大图片</h4><p>关于这一点，我的理解是：操作系统放大图片的处理其实是对图片中每个实际像素的逻辑扩大，也就是图片源文件其实是不变的，但是我们再放大时其实是在使用临时的图片文件，然后我们对源文件的每个像素进行采样并进行新的映射，比如原来的 1个像素映射成 2*2个像素区的逻辑像素。</p>
+<h2 id="3-具体实现"><a href="#3-具体实现" class="headerlink" title="3.具体实现"></a>3.具体实现</h2><p>看了上面的操作，实际上我们就可以有初步的方案了，也就是对图片进行缩小的采样与扩大的映射。</p>
+<h4 id="1-使用浏览器与操作系统的能力进行操作。（js版，学习逻辑直接跳过）"><a href="#1-使用浏览器与操作系统的能力进行操作。（js版，学习逻辑直接跳过）" class="headerlink" title="1.使用浏览器与操作系统的能力进行操作。（js版，学习逻辑直接跳过）"></a>1.使用浏览器与操作系统的能力进行操作。（js版，学习逻辑直接跳过）</h4><ol>
+<li>将图片缩小并画到画布上。</li>
+<li>将画布上的图片画到临时图片DOM上。</li>
+<li>将临时的图片DOM画到与图片原来尺寸相同甚至更大的画布上。</li>
 </ol>
-<p><code>NODE_PATH    D:\Program Files\nodejs\node_global\node_modules</code></p>
-<p><code>NODE_PATH</code> 用于进行全局的模块检索，例如加载npm全局下的<code>express</code>模块的时候</p>
-<ol start="2">
-<li></li>
-</ol>
-<p><code>PATHD D:\Program Files\nodejs\node_global</code></p>
-<h2 id="3-配置pnpm"><a href="#3-配置pnpm" class="headerlink" title="3.配置pnpm"></a>3.配置pnpm</h2><p>注意此项可以不用配置，在没有配置的情况下会在当前卷的根目录创建<code>node_modules</code>进行管理。</p>
-<p>如果想要pnpm跨磁盘或者卷进行管理可以按如下设置</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pnpm config <span class="hljs-built_in">set</span> store<span class="hljs-literal">-dir</span> /path/to/.pnpm<span class="hljs-literal">-store</span><br></code></pre></td></tr></table></figure>
-
-<p>参考链接：<a target="_blank" rel="noopener" href="https://www.pnpm.cn/configuring%E3%80%81https://www.pnpm.cn/faq#store-path-is-not-specified">https://www.pnpm.cn/configuring、https://www.pnpm.cn/faq#store-path-is-not-specified</a></p>
-<h4 id="4-修改install的镜像源"><a href="#4-修改install的镜像源" class="headerlink" title="4.修改install的镜像源"></a>4.修改install的镜像源</h4><p>这里就是淘宝的，要是用别的请搜索对应uri</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config get registry<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="python-anaconda"><a href="#python-anaconda" class="headerlink" title="python anaconda"></a>python anaconda</h1><h2 id="1-安装anaconda"><a href="#1-安装anaconda" class="headerlink" title="1.安装anaconda"></a>1.安装anaconda</h2><p>大陆用户推荐用清华的源进行安装解决安装包下载过慢的问题</p>
-<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
-<h2 id="2-解决一些典型问题（待补充）"><a href="#2-解决一些典型问题（待补充）" class="headerlink" title="2.解决一些典型问题（待补充）"></a>2.解决一些典型问题（待补充）</h2><h4 id="1-pip-is-configured-with-locations-that-require-TLS-SSL"><a href="#1-pip-is-configured-with-locations-that-require-TLS-SSL" class="headerlink" title="1.[pip is configured with locations that require TLS/SSL]"></a>1.<code>[pip is configured with locations that require TLS/SSL]</code></h4><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45954528/pip-is-configured-with-locations-that-require-tls-ssl-however-the-ssl-module-in">https://stackoverflow.com/questions/45954528/pip-is-configured-with-locations-that-require-tls-ssl-however-the-ssl-module-in</a></p>
-<p>一般我们都会把 python解释器和pip的路径加入环境，但是这里我们也需要加入第三个路径到环境中。（这里需要的原因可能是我在使用anaconda这个发型版本）</p>
-<h2 id="3-修改local-cache"><a href="#3-修改local-cache" class="headerlink" title="3.修改local cache"></a>3.修改local cache</h2><p>下面这篇博文讲述了为什么需要这个cache</p>
-<p><a target="_blank" rel="noopener" href="https://www.techiediaries.com/python-pip-local-cache/">https://www.techiediaries.com/python-pip-local-cache/</a></p>
-<p>配置方法:在<code>%HOME%</code>的<code>pip</code>目录下创建<code>pip.ini</code>（没有目录就自建一个）</p>
-<p>找到<code>%HOME%</code>, 可以在文件资源管理器的路径栏输入<code>homepath</code></p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[global]</span><br><span class="hljs-attr">cache-dir</span> = E:/languages/anaconda3/mypip/cache<br><span class="hljs-attr">log-file</span> = E:/languages/anaconda3/mypip/pip.log<br></code></pre></td></tr></table></figure>
-
-<h2 id="4-修改pip安装源"><a href="#4-修改pip安装源" class="headerlink" title="4.修改pip安装源"></a>4.修改pip安装源</h2><p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/">https://mirrors.tuna.tsinghua.edu.cn/help/pypi/</a></p>
-<h4 id="5-检查一下配置情况"><a href="#5-检查一下配置情况" class="headerlink" title="5. 检查一下配置情况"></a>5. 检查一下配置情况</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pip config list<br></code></pre></td></tr></table></figure>
-
-<p><img src="/2022/08/23/My-new-way/image-20220823141458429.png" srcset="/img/loading.gif" lazyload alt="result image"></p>
-<h2 id="6-2022-x2F-8-x2F-27补充"><a href="#6-2022-x2F-8-x2F-27补充" class="headerlink" title="6. 2022&#x2F;8&#x2F;27补充:"></a>6. 2022&#x2F;8&#x2F;27补充:</h2><p>error:</p>
-<blockquote>
-<p>solving environment: failed with intitial frozen solve.Retrying with flexible solve.</p>
-</blockquote>
-<p><img src="/2022/08/23/My-new-way/image-20220827185106780.png" srcset="/img/loading.gif" lazyload alt="error image"></p>
-<h4 id="方案一：直面困难"><a href="#方案一：直面困难" class="headerlink" title="方案一：直面困难"></a>方案一：直面困难</h4><p>1.修改<code>conda</code>安装的镜像源为后续操作提速</p>
-<p>具体修改方案可以参考清华提供的方案<code>.condarc</code></p>
-<p>windows下使用命令生成在<code>%home%</code>目录下生成</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda config <span class="hljs-literal">--set</span> show_channel_urls yes<br></code></pre></td></tr></table></figure>
-
-<p>然后将下方链接的中的配置复制到<code>.condarc</code>中</p>
-<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/</a></p>
-<p>2. </p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda update <span class="hljs-literal">-all</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h4 id="方案二：曲线救国"><a href="#方案二：曲线救国" class="headerlink" title="方案二：曲线救国"></a>方案二：曲线救国</h4><p>使用pip install 安装，但是这样的话不能享受到conda create env带来的好处。但是真的简单。</p>
-<h4 id="方案三：降级conda策略"><a href="#方案三：降级conda策略" class="headerlink" title="方案三：降级conda策略"></a>方案三：降级conda策略</h4><p>网上自搜</p>
-<h1 id="go"><a href="#go" class="headerlink" title="go"></a>go</h1><p>这个就是最为简单的了</p>
-<p>去官网找个安装包跟着官网走就好了：<a target="_blank" rel="noopener" href="https://go.dev/doc/install">https://go.dev/doc/install</a></p>
-<p>安装好之后推荐修改一下<code>GOPATH</code>和<code>GOBIN</code>,目前版本<code> GO111MODULE</code>默认是设为<code>on</code></p>
-<p>小小的看一下<code>GOPATH</code>的目录结构，以及功能：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/88.html">http://c.biancheng.net/view/88.html</a></p>
-<h2 id="1-在（用户环境变量）中修改GOPATH"><a href="#1-在（用户环境变量）中修改GOPATH" class="headerlink" title="1.在（用户环境变量）中修改GOPATH"></a>1.在（用户环境变量）中修改GOPATH</h2><p>把对应的变量改为你自己的目录路径即可</p>
-<h4 id="2-GOBIN"><a href="#2-GOBIN" class="headerlink" title="2.GOBIN"></a>2.GOBIN</h4><p>这个可以不做，我做这个主要是让后期<code>install</code>的文件和<code>bin</code>目录下的开发者工具相隔离</p>
-<h4 id="3-修改GOCACHE"><a href="#3-修改GOCACHE" class="headerlink" title="3.修改GOCACHE"></a>3.修改GOCACHE</h4><p>我也是简单地修改了一下<code>GOCACHE</code>,我是放在<code>GOPATH</code>之下的</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">go env <span class="hljs-literal">-w</span> GOCACHE=yourpath<br></code></pre></td></tr></table></figure>
-
-<h2 id="4-设置代理"><a href="#4-设置代理" class="headerlink" title="4.设置代理"></a>4.设置代理</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1773630">https://cloud.tencent.com/developer/article/1773630</a></p>
+<p>在上述的操作中图片的采样以及映射均由浏览器为我们实现。</p>
+<p>具体代码：scale为采样间隔或者说缩放比例，影响采样频率。</p>
+<p><img src="/2022/09/14/pixel-image/js.png" srcset="/img/loading.gif" lazyload alt="image-20220914130850306"></p>
+<h4 id="2-使用自己实现的逻辑方案。"><a href="#2-使用自己实现的逻辑方案。" class="headerlink" title="2.使用自己实现的逻辑方案。"></a>2.使用自己实现的逻辑方案。</h4><p>1.每隔多少行多少列(gap)进行一次采样</p>
+<p>2.对采样后的像素进行映射,映射大小为 1像素 &#x3D; <code>gap * gap</code> 像素</p>
+<p>因为图片的资源占用量比较大。</p>
+<p>具体可以参考：<a target="_blank" rel="noopener" href="https://github.com/sunboyZgz/pixel-image/blob/56c54ccdbc526c72a7ef607b41a1bb1f07831aff/packages/pixel-image/src/main.ts#L47">https://github.com/sunboyZgz/pixel-image/blob/56c54ccdbc526c72a7ef607b41a1bb1f07831aff/packages/pixel-image/src/main.ts#L47</a></p>
 
                 
               </div>
@@ -451,7 +387,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B7%A5%E5%85%B7/" class="category-chain-item">工具</a>
+  <a href="/categories/code/" class="category-chain-item">code</a>
   
   
 
@@ -466,7 +402,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%85%8D%E7%BD%AE/">#配置</a>
+        <a href="/tags/%E5%9B%BE%E5%83%8F/">#图像</a>
       
     </div>
   
@@ -478,8 +414,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>新的篇章</div>
-      <div>http://example.com/2022/08/23/My-new-way/</div>
+      <div>图片像素化</div>
+      <div>http://example.com/2022/09/14/pixel-image/</div>
     </div>
     <div class="license-meta">
       
@@ -491,7 +427,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月23日</div>
+          <div>2022年9月14日</div>
         </div>
       
       
@@ -523,15 +459,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/24/newblog/" title="新的博客">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">新的博客</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/08/24/newblog/" title="新的博客">
+                        <span class="hidden-mobile">新的博客</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
