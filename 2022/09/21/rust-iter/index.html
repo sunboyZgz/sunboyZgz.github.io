@@ -1,0 +1,743 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="sunboyZgz">
+  <meta name="keywords" content="technic">
+  
+    <meta name="description" content="一文入门rust iterator1.本文由来秉承一贯的做法，我还是想说说为什么我会想要写下这篇文章。起因是这样的，作为一名刚想rust的新手，我找到了一个锻炼rust语法比较好的平台codewars，当然我在之前就已经阅读了rust最优质的文章资源：https:&#x2F;&#x2F;doc.rust-lang.org&#x2F;book&#x2F;ch01-00-getting-started.html ，以及使用过rustling">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一文入门rust iterator">
+<meta property="og:url" content="http://example.com/2022/09/21/rust-iter/index.html">
+<meta property="og:site_name" content="sunboy">
+<meta property="og:description" content="一文入门rust iterator1.本文由来秉承一贯的做法，我还是想说说为什么我会想要写下这篇文章。起因是这样的，作为一名刚想rust的新手，我找到了一个锻炼rust语法比较好的平台codewars，当然我在之前就已经阅读了rust最优质的文章资源：https:&#x2F;&#x2F;doc.rust-lang.org&#x2F;book&#x2F;ch01-00-getting-started.html ，以及使用过rustling">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/rust.png">
+<meta property="article:published_time" content="2022-09-21T11:20:22.000Z">
+<meta property="article:modified_time" content="2022-09-21T04:55:29.556Z">
+<meta property="article:author" content="sunboyZgz">
+<meta property="article:tag" content="newbie">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/rust.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>一文入门rust iterator 😄 sunboy</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"..","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":"§"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":true,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":1},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>2G World</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/blog-config/default.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="一文入门rust iterator"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-21 11:20" pubdate>
+          2022年9月21日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          25 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="rust"
+        id="heading-72812e30873455dcee2ce2d1ee26e4ab" role="tab" data-toggle="collapse" href="#collapse-72812e30873455dcee2ce2d1ee26e4ab"
+        aria-expanded="true"
+      >
+        rust
+        <span class="list-group-count">(1)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-72812e30873455dcee2ce2d1ee26e4ab"
+           role="tabpanel" aria-labelledby="heading-72812e30873455dcee2ce2d1ee26e4ab">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/09/21/rust-iter/" title="一文入门rust iterator"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">一文入门rust iterator</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">一文入门rust iterator</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="一文入门rust-iterator"><a href="#一文入门rust-iterator" class="headerlink" title="一文入门rust iterator"></a>一文入门rust iterator</h1><h2 id="1-本文由来"><a href="#1-本文由来" class="headerlink" title="1.本文由来"></a>1.本文由来</h2><p>秉承一贯的做法，我还是想说说为什么我会想要写下这篇文章。起因是这样的，作为一名刚想rust的新手，我找到了一个锻炼rust语法比较好的平台<code>codewars</code>，当然我在之前就已经阅读了rust最优质的文章资源：<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/ch01-00-getting-started.html">https://doc.rust-lang.org/book/ch01-00-getting-started.html</a> ，以及使用过<code>rustlings</code>进行了一些的知识点检查。在锻炼的过程中，我发现那些简短而优雅的代码不仅仅是逻辑运用更加熟练，同时他们对于标准库的掌握与熟悉程度也是非常得高。</p>
+<h2 id="2-一个简单的入门级rust-iterator"><a href="#2-一个简单的入门级rust-iterator" class="headerlink" title="2.一个简单的入门级rust iterator"></a>2.一个简单的入门级rust iterator</h2><h4 id="1-让我们自己进行便利操作我们会怎么做？"><a href="#1-让我们自己进行便利操作我们会怎么做？" class="headerlink" title="1.让我们自己进行便利操作我们会怎么做？"></a>1.让我们自己进行便利操作我们会怎么做？</h4><p>假设我们有以下这样的结构，我们如果要遍历并对每个元素进行相应的操作时应该怎么做？</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Bag</span>&lt;T&gt; &#123;<br>    elms: <span class="hljs-type">Vec</span>&lt;T&gt;,<br>&#125;<br><span class="hljs-comment">/**</span><br><span class="hljs-comment">struct Bag&lt;T&gt; (Vec&lt;T&gt;) 这种结构也可以，主要是为了不直接使用Vec，只使用他的装载功能</span><br><span class="hljs-comment">*/</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="2-大部分人可能的做法"><a href="#2-大部分人可能的做法" class="headerlink" title="2.大部分人可能的做法"></a>2.大部分人可能的做法</h4><p>如果让我们自己来进行实现，我们认为对于一个新手来说最容易想到的就是，实现可以传入闭包的“方法”。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">traverse</span>&lt;F&gt;(&amp;<span class="hljs-keyword">self</span>, f: F)<br>    <span class="hljs-keyword">where</span><br>        F: <span class="hljs-title function_ invoke__">Fn</span>(T, <span class="hljs-type">usize</span>) <span class="hljs-punctuation">-&gt;</span> (),<br>    &#123;<br>        <span class="hljs-keyword">for</span> <span class="hljs-variable">i</span> <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>..<span class="hljs-keyword">self</span>.elms.<span class="hljs-title function_ invoke__">len</span>() &#123;<br>            <span class="hljs-title function_ invoke__">f</span>(<span class="hljs-keyword">self</span>.elms.<span class="hljs-title function_ invoke__">get</span>(i).<span class="hljs-title function_ invoke__">unwrap</span>().<span class="hljs-title function_ invoke__">clone</span>(), i);<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-问题分析"><a href="#3-问题分析" class="headerlink" title="3.问题分析"></a>3.问题分析</h4><p>以上做法没有问题，并且能够实现特别多的需求但是上面的做法在不连续的遍历中就显得别不是那么得灵活。如果想要一种可以完全控制其遍历进度并且充分灵活的方案就需要迭代器的加入。</p>
+<p>跟随着官网对于迭代器的实现，我在最开始实现了以下一个错误案例。</p>
+<p><strong>注意：</strong>这是错误案例</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Bag</span>&lt;T&gt; &#123;<br>    elms: <span class="hljs-type">Vec</span>&lt;T&gt;,<br>    idx: <span class="hljs-type">usize</span>,<br>&#125;<br><span class="hljs-keyword">impl</span>&lt;T: <span class="hljs-built_in">Copy</span>&gt; <span class="hljs-built_in">Iterator</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">Bag</span>&lt;T&gt; &#123;<br>    <span class="hljs-keyword">type</span> <span class="hljs-title class_">Item</span> = T;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">next</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;<span class="hljs-keyword">Self</span>::Item&gt; &#123;<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">self</span>.idx &lt; <span class="hljs-keyword">self</span>.elms.<span class="hljs-title function_ invoke__">len</span>() &#123;<br>            <span class="hljs-keyword">let</span> <span class="hljs-variable">result</span> = <span class="hljs-title function_ invoke__">Some</span>(<span class="hljs-keyword">self</span>.elms.<span class="hljs-title function_ invoke__">get</span>(<span class="hljs-keyword">self</span>.idx).<span class="hljs-title function_ invoke__">unwrap</span>().<span class="hljs-title function_ invoke__">clone</span>());<br>            <span class="hljs-keyword">self</span>.idx += <span class="hljs-number">1</span>;<br>            result<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-literal">None</span><br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>在这个问题中我们会发现，我们可以进行迭代，但是问题是我们的迭代只能遍历一次，因为<code>idx</code>的索引值会越界。这个时候有人会说在遍历到最后一个的时候重置索引值，这样可行但是如果我们同时需要两个Bag的迭代器呢？ok，有人会说为<code>Bag</code>提供<code>Clone Trait</code>，但是这样的问题就是不必要的内存开辟。</p>
+<p>所以对于<code>Iterator</code>，我们应该将他看成是一个独立的个体，但同时他又必须与需要遍历的对象保持一定的联系。</p>
+<h4 id="4-最终的简单方案"><a href="#4-最终的简单方案" class="headerlink" title="4.最终的简单方案"></a>4.最终的简单方案</h4><p>1.首先我们需要一个独立的遍历器</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">BagIter</span>&lt;T&gt; &#123;<br>    idx: <span class="hljs-type">usize</span>,<span class="hljs-comment">//这是独立的访问索引</span><br>    elms: Rc&lt;RefCell&lt;<span class="hljs-type">Vec</span>&lt;T&gt;&gt;&gt;, <span class="hljs-comment">//记录我们需要遍历的context</span><br>&#125;<br><span class="hljs-keyword">impl</span>&lt;T&gt; BagIter&lt;T&gt; &#123;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>(elms: Rc&lt;RefCell&lt;<span class="hljs-type">Vec</span>&lt;T&gt;&gt;&gt;) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span> &#123;<br>        BagIter &#123; idx: <span class="hljs-number">0</span>, elms &#125;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">impl</span>&lt;T&gt; <span class="hljs-built_in">Iterator</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">BagIter</span>&lt;T&gt;<br><span class="hljs-keyword">where</span><br>    T: <span class="hljs-built_in">Copy</span>,<br>&#123;<br>    <span class="hljs-keyword">type</span> <span class="hljs-title class_">Item</span> = T;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">next</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Option</span>&lt;<span class="hljs-keyword">Self</span>::Item&gt; &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">elms</span> = <span class="hljs-keyword">self</span>.elms.<span class="hljs-title function_ invoke__">borrow</span>();<br>        <span class="hljs-keyword">match</span> <span class="hljs-keyword">self</span>.idx &lt; elms.<span class="hljs-title function_ invoke__">len</span>() &#123;<br>            <span class="hljs-literal">true</span> =&gt; <span class="hljs-keyword">match</span> elms.<span class="hljs-title function_ invoke__">get</span>(<span class="hljs-keyword">self</span>.idx) &#123;<br>                <span class="hljs-title function_ invoke__">Some</span>(&amp;x) =&gt; &#123;<br>                    <span class="hljs-keyword">self</span>.idx += <span class="hljs-number">1</span>;<br>                    <span class="hljs-title function_ invoke__">Some</span>(x)<br>                &#125;<br>                <span class="hljs-literal">None</span> =&gt; <span class="hljs-literal">None</span>,<br>            &#125;,<br>            <span class="hljs-literal">false</span> =&gt; <span class="hljs-literal">None</span>,<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<p>2.实现一个 <code>iter</code> 每次调用 <code>iter()</code>生成一个新的独立遍历器。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">pub</span> <span class="hljs-keyword">struct</span> <span class="hljs-title class_">Bag</span>&lt;T&gt; &#123;<br>    elms: Rc&lt;RefCell&lt;<span class="hljs-type">Vec</span>&lt;T&gt;&gt;&gt;,<br>&#125;<br><span class="hljs-comment">//can only put things into Bag</span><br><span class="hljs-keyword">impl</span>&lt;T&gt; Bag&lt;T&gt; &#123;<br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">add</span>(&amp;<span class="hljs-keyword">mut</span> <span class="hljs-keyword">self</span>, item: T) &#123;<br>        <span class="hljs-keyword">self</span>.elms.<span class="hljs-title function_ invoke__">borrow_mut</span>().<span class="hljs-title function_ invoke__">push</span>(item)<br>    &#125;<br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">new</span>() <span class="hljs-punctuation">-&gt;</span> Bag&lt;T&gt; &#123;<br>        <span class="hljs-keyword">let</span> <span class="hljs-variable">elms</span> = Rc::<span class="hljs-title function_ invoke__">new</span>(RefCell::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-built_in">vec!</span>[]));<br>        Bag &#123; elms: elms &#125;<br>    &#125;<br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">size</span>(&amp;<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">usize</span> &#123;<br>        <span class="hljs-keyword">self</span>.elms.<span class="hljs-title function_ invoke__">borrow</span>().<span class="hljs-title function_ invoke__">len</span>()<br>    &#125;<br>    <span class="hljs-keyword">pub</span> <span class="hljs-keyword">fn</span> <span class="hljs-title function_">iter</span>(&amp;<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> BagIter&lt;T&gt; &#123;<br>        BagIter::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-keyword">self</span>.elms.<span class="hljs-title function_ invoke__">clone</span>())<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="5-满足你的-for-…-in-expression"><a href="#5-满足你的-for-…-in-expression" class="headerlink" title="5.满足你的 for … in expression"></a>5.满足你的 for … in expression</h4><p>众所周知在一套完美的第三方库或者标准库下，rust为第三方开发者提供的体验是非常优越的，其主要源自<code>Trait</code>以及一些隐式编译的实现。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">impl</span>&lt;T: <span class="hljs-built_in">Copy</span>&gt; <span class="hljs-built_in">IntoIterator</span> <span class="hljs-keyword">for</span> <span class="hljs-title class_">Bag</span>&lt;T&gt; &#123;<br>    <span class="hljs-keyword">type</span> <span class="hljs-title class_">Item</span> = T;<br>    <span class="hljs-keyword">type</span> <span class="hljs-title class_">IntoIter</span> = BagIter&lt;T&gt;;<br>    <span class="hljs-keyword">fn</span> <span class="hljs-title function_">into_iter</span>(<span class="hljs-keyword">self</span>) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-keyword">Self</span>::IntoIter &#123;<br>        <span class="hljs-keyword">self</span>.<span class="hljs-title function_ invoke__">iter</span>()<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用<code>IntoIterator</code>可以让你的代码在编译时生成对于self.iter()的迭代器。另外根据<code>IntoIterator for &amp;mut Bag&lt;T&gt;</code>, <code>IntoIterator for &amp; Bag&lt;T&gt;</code>的不同也可以实现不同的借用、修改迭代器，当然咯，这个都是得重写一份逻辑的。</p>
+<p>ok，希望这篇入门能够帮你建立如何编写迭代器的认知。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/rust/" class="category-chain-item">rust</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/newbie/">#newbie</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>一文入门rust iterator</div>
+      <div>http://example.com/2022/09/21/rust-iter/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>sunboyZgz</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年9月21日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/14/pixel-image/" title="图片像素化">
+                        <span class="hidden-mobile">图片像素化</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/sunboyZgz" target="_blank" rel="nofollow noopener"><span>Github</span></a> <!--<i class="iconfont icon-love" style="color: red"></i>--> <span>❤️</span> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":true,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
