@@ -16,27 +16,24 @@
   <meta name="author" content="sunboyZgz">
   <meta name="keywords" content="technic">
   
-    <meta name="description" content="为什么会有这篇文章？由于最近c盘紧张，我重装了一次系统同进行了一些卷容量的调整，因为最近没有怎么写过blog在进行格式化的时候将原来搭建的个人blog给清除了而且也没有做备份，git page上传的也只是一个经过处理后的html文件，所以我原来的blog文件都丢失了。因为我需要进行一些环境配置，所以写下了这篇文章。 nodejs + npm + pnpm 配置1.windows 下安装nodejs">
+    <meta name="description" content="浮点数与其构成为什么学习浮点数？对于浮点数，我一直都是抱着深入其基础实现的想法，但是之前一直没有进行底层知识的学习。终于在这几周，我开始恶补底层的知识，虽然对于大部分人来说浮点数以及对于浮点数的操作都不需要知道其内部的实现，不过我认为我们可以不用去实现，但是作为知识面我们至少还是要了解一二的。 比如在程序语言中经常可以看到的问题：0.1 + 0.2 !&#x3D; 0.3 问题。 当然上面这个问题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新的篇章">
-<meta property="og:url" content="http://example.com/2022/08/23/My-new-way/index.html">
+<meta property="og:title" content="浮点数总结">
+<meta property="og:url" content="http://example.com/2022/10/12/float-numeric/index.html">
 <meta property="og:site_name" content="sunboy">
-<meta property="og:description" content="为什么会有这篇文章？由于最近c盘紧张，我重装了一次系统同进行了一些卷容量的调整，因为最近没有怎么写过blog在进行格式化的时候将原来搭建的个人blog给清除了而且也没有做备份，git page上传的也只是一个经过处理后的html文件，所以我原来的blog文件都丢失了。因为我需要进行一些环境配置，所以写下了这篇文章。 nodejs + npm + pnpm 配置1.windows 下安装nodejs">
+<meta property="og:description" content="浮点数与其构成为什么学习浮点数？对于浮点数，我一直都是抱着深入其基础实现的想法，但是之前一直没有进行底层知识的学习。终于在这几周，我开始恶补底层的知识，虽然对于大部分人来说浮点数以及对于浮点数的操作都不需要知道其内部的实现，不过我认为我们可以不用去实现，但是作为知识面我们至少还是要了解一二的。 比如在程序语言中经常可以看到的问题：0.1 + 0.2 !&#x3D; 0.3 问题。 当然上面这个问题">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/08/23/My-new-way/image-20220823141458429.png">
-<meta property="og:image" content="http://example.com/2022/08/23/My-new-way/image-20220827185106780.png">
-<meta property="article:published_time" content="2022-08-23T21:39:31.000Z">
+<meta property="article:published_time" content="2022-10-12T12:25:00.000Z">
 <meta property="article:modified_time" content="2022-10-12T04:29:37.148Z">
 <meta property="article:author" content="sunboyZgz">
-<meta property="article:tag" content="配置">
+<meta property="article:tag" content="计算机组成原理">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/08/23/My-new-way/image-20220823141458429.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>新的篇章 😄 sunboy</title>
+  <title>浮点数总结 😄 sunboy</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -213,7 +210,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="新的篇章"></span>
+            <span id="subtitle" data-typed-text="浮点数总结"></span>
           
         </div>
 
@@ -224,8 +221,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-23 21:39" pubdate>
-          2022年8月23日 晚上
+        <time datetime="2022-10-12 12:25" pubdate>
+          2022年10月12日 中午
         </time>
       </span>
     
@@ -236,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          1.3k 字
         
       </span>
     
@@ -247,7 +244,7 @@
         
         
         
-          20 分钟
+          11 分钟
         
       </span>
     
@@ -300,17 +297,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="工具"
-        id="heading-20dce2c6fa909a5cd62526615fe2788a" role="tab" data-toggle="collapse" href="#collapse-20dce2c6fa909a5cd62526615fe2788a"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="计算机底层知识"
+        id="heading-7ca6e9a53f41c1293ca900932dcf6829" role="tab" data-toggle="collapse" href="#collapse-7ca6e9a53f41c1293ca900932dcf6829"
         aria-expanded="true"
       >
-        工具
-        <span class="list-group-count">(2)</span>
+        计算机底层知识
+        <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-20dce2c6fa909a5cd62526615fe2788a"
-           role="tabpanel" aria-labelledby="heading-20dce2c6fa909a5cd62526615fe2788a">
+      <div class="category-collapse collapse show" id="collapse-7ca6e9a53f41c1293ca900932dcf6829"
+           role="tabpanel" aria-labelledby="heading-7ca6e9a53f41c1293ca900932dcf6829">
         
         
           
@@ -319,19 +316,10 @@
     
       
       
-        <a href="/2022/08/23/My-new-way/" title="新的篇章"
+        <a href="/2022/10/12/float-numeric/" title="浮点数总结"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">新的篇章</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/08/24/newblog/" title="新的博客"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">新的博客</span>
+          <span class="category-post">浮点数总结</span>
         </a>
       
     
@@ -354,85 +342,119 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">新的篇章</h1>
+            <h1 style="display: none">浮点数总结</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="为什么会有这篇文章？"><a href="#为什么会有这篇文章？" class="headerlink" title="为什么会有这篇文章？"></a>为什么会有这篇文章？</h1><p>由于最近c盘紧张，我重装了一次系统同进行了一些卷容量的调整，因为最近没有怎么写过blog在进行格式化的时候将原来搭建的个人blog给清除了而且也没有做备份，git page上传的也只是一个经过处理后的html文件，所以我原来的blog文件都丢失了。因为我需要进行一些环境配置，所以写下了这篇文章。</p>
-<h1 id="nodejs-npm-pnpm-配置"><a href="#nodejs-npm-pnpm-配置" class="headerlink" title="nodejs + npm + pnpm 配置"></a>nodejs + npm + pnpm 配置</h1><h2 id="1-windows-下安装nodejs"><a href="#1-windows-下安装nodejs" class="headerlink" title="1.windows 下安装nodejs"></a>1.windows 下安装nodejs</h2><p><a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a></p>
-<p>按照步骤安装即可，注意一下nodejs的安装目录即可</p>
-<h2 id="2-配置npm"><a href="#2-配置npm" class="headerlink" title="2.配置npm"></a>2.配置npm</h2><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config get prefix<br></code></pre></td></tr></table></figure>
+                <h1 id="浮点数与其构成"><a href="#浮点数与其构成" class="headerlink" title="浮点数与其构成"></a>浮点数与其构成</h1><h2 id="为什么学习浮点数？"><a href="#为什么学习浮点数？" class="headerlink" title="为什么学习浮点数？"></a>为什么学习浮点数？</h2><p>对于浮点数，我一直都是抱着深入其基础实现的想法，但是之前一直没有进行底层知识的学习。终于在这几周，我开始恶补底层的知识，虽然对于大部分人来说浮点数以及对于浮点数的操作都不需要知道其内部的实现，不过我认为我们可以不用去实现，但是作为知识面我们至少还是要了解一二的。</p>
+<p>比如在程序语言中经常可以看到的问题：0.1 + 0.2 !&#x3D; 0.3 问题。</p>
+<p>当然上面这个问题归根到底主要是小数在二进制中的计算方案采用一种乘2取1的方法</p>
+<h2 id="浮点数的基本格式"><a href="#浮点数的基本格式" class="headerlink" title="浮点数的基本格式"></a>浮点数的基本格式</h2><p>我们知道计算机底层对于数的表示都是 <code>0101xxxx...</code> 这样的二进制码，在整数的二进制中我们将有符号数的存储单元(这里所说的存储单元与int32 &#x3D; 4 bytes对应)最高位置设为符号位，1表示整个数为负数。</p>
+<h4 id="十进制如何进行浮点数表示"><a href="#十进制如何进行浮点数表示" class="headerlink" title="十进制如何进行浮点数表示"></a>十进制如何进行浮点数表示</h4><p>例如：</p>
+<ul>
+<li>0.000001 &#x3D; 1.0 * 10^-6</li>
+<li>30000 &#x3D; 3.0 * 10^4</li>
+</ul>
+<h4 id="二进制浮点数表示"><a href="#二进制浮点数表示" class="headerlink" title="二进制浮点数表示"></a>二进制浮点数表示</h4><p>所以我们可以对这种认识进行二进制翻译</p>
+<p>1.0 * 10^6 &#x3D; 1 * binary(10^-6)</p>
+<p>3.0 * 10^4 &#x3D; 11 * binary(10^4)</p>
+<h4 id="存储在计算机里的二进制浮点数表示"><a href="#存储在计算机里的二进制浮点数表示" class="headerlink" title="存储在计算机里的二进制浮点数表示"></a>存储在计算机里的二进制浮点数表示</h4><p>但是我们不能将一个表达式直接存储在计算机中，虽然我认为是有办法可以做到，但是这并不划算，所以我们需要一套性价比更高的方案。</p>
+<p>于是乎我们就需要去制定一套存储格式，去规定浮点数的正负，指数次数，以及实际有效的数。</p>
+<p>另外我们也可以发现对于30000这样的数字我们也可以表示为30 * 10^3 &#x3D;&#x3D; 3 * 10^4,而我们称等号右边是对等号左边的规格化，同理二进制也可以做这样的规格化，因为二进制只有0和1，所以我们只会在左边数为1的时候进行一次移位，这样我们省下这一位的空间了，为浮点数提供更大的表达范围。</p>
+<p>浮点数的三部分：<code>符号位</code>，<code>指数段</code>，<code>尾数段</code>。值得一提的是，浮点数的符号位这种表示与整数符号位的设计思维并不一样。</p>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs isbl">浮点数 = (-<span class="hljs-number">1</span>)^<span class="hljs-variable">S</span> * <span class="hljs-function"><span class="hljs-title">fraction</span>(尾数) * <span class="hljs-number">2</span>^<span class="hljs-title">exponent</span>(指数)</span><br></code></pre></td></tr></table></figure>
 
-<p>这条命令可以直接获取你的全局安装路径的前缀,这个前缀会用于</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm install <span class="hljs-literal">-g</span> xxxx<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config <span class="hljs-built_in">set</span> prefix <span class="hljs-string">&quot;D:\Program Files\nodejs\node_global&quot;</span><br><br>npm config <span class="hljs-built_in">set</span> cache <span class="hljs-string">&quot;D:\Program Files\nodejs\node_cache&quot;</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h4><ol>
-<li></li>
-</ol>
-<p><code>NODE_PATH    D:\Program Files\nodejs\node_global\node_modules</code></p>
-<p><code>NODE_PATH</code> 用于进行全局的模块检索，例如加载npm全局下的<code>express</code>模块的时候</p>
-<ol start="2">
-<li></li>
-</ol>
-<p><code>PATHD D:\Program Files\nodejs\node_global</code></p>
-<h2 id="3-配置pnpm"><a href="#3-配置pnpm" class="headerlink" title="3.配置pnpm"></a>3.配置pnpm</h2><p>注意此项可以不用配置，在没有配置的情况下会在当前卷的根目录创建<code>node_modules</code>进行管理。</p>
-<p>如果想要pnpm跨磁盘或者卷进行管理可以按如下设置</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pnpm config <span class="hljs-built_in">set</span> store<span class="hljs-literal">-dir</span> /path/to/.pnpm<span class="hljs-literal">-store</span><br></code></pre></td></tr></table></figure>
-
-<p>参考链接：<a target="_blank" rel="noopener" href="https://www.pnpm.cn/configuring%E3%80%81https://www.pnpm.cn/faq#store-path-is-not-specified">https://www.pnpm.cn/configuring、https://www.pnpm.cn/faq#store-path-is-not-specified</a></p>
-<h4 id="4-修改install的镜像源"><a href="#4-修改install的镜像源" class="headerlink" title="4.修改install的镜像源"></a>4.修改install的镜像源</h4><p>这里就是淘宝的，要是用别的请搜索对应uri</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com<br></code></pre></td></tr></table></figure>
-
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">npm config get registry<br></code></pre></td></tr></table></figure>
-
-
-
-<h1 id="python-anaconda"><a href="#python-anaconda" class="headerlink" title="python anaconda"></a>python anaconda</h1><h2 id="1-安装anaconda"><a href="#1-安装anaconda" class="headerlink" title="1.安装anaconda"></a>1.安装anaconda</h2><p>大陆用户推荐用清华的源进行安装解决安装包下载过慢的问题</p>
-<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
-<h2 id="2-解决一些典型问题（待补充）"><a href="#2-解决一些典型问题（待补充）" class="headerlink" title="2.解决一些典型问题（待补充）"></a>2.解决一些典型问题（待补充）</h2><h4 id="1-pip-is-configured-with-locations-that-require-TLS-SSL"><a href="#1-pip-is-configured-with-locations-that-require-TLS-SSL" class="headerlink" title="1.[pip is configured with locations that require TLS/SSL]"></a>1.<code>[pip is configured with locations that require TLS/SSL]</code></h4><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/45954528/pip-is-configured-with-locations-that-require-tls-ssl-however-the-ssl-module-in">https://stackoverflow.com/questions/45954528/pip-is-configured-with-locations-that-require-tls-ssl-however-the-ssl-module-in</a></p>
-<p>一般我们都会把 python解释器和pip的路径加入环境，但是这里我们也需要加入第三个路径到环境中。（这里需要的原因可能是我在使用anaconda这个发型版本）</p>
-<h2 id="3-修改local-cache"><a href="#3-修改local-cache" class="headerlink" title="3.修改local cache"></a>3.修改local cache</h2><p>下面这篇博文讲述了为什么需要这个cache</p>
-<p><a target="_blank" rel="noopener" href="https://www.techiediaries.com/python-pip-local-cache/">https://www.techiediaries.com/python-pip-local-cache/</a></p>
-<p>配置方法:在<code>%HOME%</code>的<code>pip</code>目录下创建<code>pip.ini</code>（没有目录就自建一个）</p>
-<p>找到<code>%HOME%</code>, 可以在文件资源管理器的路径栏输入<code>homepath</code></p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[global]</span><br><span class="hljs-attr">cache-dir</span> = E:/languages/anaconda3/mypip/cache<br><span class="hljs-attr">log-file</span> = E:/languages/anaconda3/mypip/pip.log<br></code></pre></td></tr></table></figure>
-
-<h2 id="4-修改pip安装源"><a href="#4-修改pip安装源" class="headerlink" title="4.修改pip安装源"></a>4.修改pip安装源</h2><p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/">https://mirrors.tuna.tsinghua.edu.cn/help/pypi/</a></p>
-<h4 id="5-检查一下配置情况"><a href="#5-检查一下配置情况" class="headerlink" title="5. 检查一下配置情况"></a>5. 检查一下配置情况</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">pip config list<br></code></pre></td></tr></table></figure>
-
-<p><img src="/2022/08/23/My-new-way/image-20220823141458429.png" srcset="/img/loading.gif" lazyload alt="result image"></p>
-<h2 id="6-2022-x2F-8-x2F-27补充"><a href="#6-2022-x2F-8-x2F-27补充" class="headerlink" title="6. 2022&#x2F;8&#x2F;27补充:"></a>6. 2022&#x2F;8&#x2F;27补充:</h2><p>error:</p>
-<blockquote>
-<p>solving environment: failed with intitial frozen solve.Retrying with flexible solve.</p>
-</blockquote>
-<p><img src="/2022/08/23/My-new-way/image-20220827185106780.png" srcset="/img/loading.gif" lazyload alt="error image"></p>
-<h4 id="方案一：直面困难"><a href="#方案一：直面困难" class="headerlink" title="方案一：直面困难"></a>方案一：直面困难</h4><p>1.修改<code>conda</code>安装的镜像源为后续操作提速</p>
-<p>具体修改方案可以参考清华提供的方案<code>.condarc</code></p>
-<p>windows下使用命令生成在<code>%home%</code>目录下生成</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda config <span class="hljs-literal">--set</span> show_channel_urls yes<br></code></pre></td></tr></table></figure>
-
-<p>然后将下方链接的中的配置复制到<code>.condarc</code>中</p>
-<p><a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/</a></p>
-<p>2. </p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">conda update <span class="hljs-literal">-all</span><br></code></pre></td></tr></table></figure>
-
-
-
-<h4 id="方案二：曲线救国"><a href="#方案二：曲线救国" class="headerlink" title="方案二：曲线救国"></a>方案二：曲线救国</h4><p>使用pip install 安装，但是这样的话不能享受到conda create env带来的好处。但是真的简单。</p>
-<h4 id="方案三：降级conda策略"><a href="#方案三：降级conda策略" class="headerlink" title="方案三：降级conda策略"></a>方案三：降级conda策略</h4><p>网上自搜</p>
-<h1 id="go"><a href="#go" class="headerlink" title="go"></a>go</h1><p>这个就是最为简单的了</p>
-<p>去官网找个安装包跟着官网走就好了：<a target="_blank" rel="noopener" href="https://go.dev/doc/install">https://go.dev/doc/install</a></p>
-<p>安装好之后推荐修改一下<code>GOPATH</code>和<code>GOBIN</code>,目前版本<code> GO111MODULE</code>默认是设为<code>on</code></p>
-<p>小小的看一下<code>GOPATH</code>的目录结构，以及功能：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/88.html">http://c.biancheng.net/view/88.html</a></p>
-<h2 id="1-在（用户环境变量）中修改GOPATH"><a href="#1-在（用户环境变量）中修改GOPATH" class="headerlink" title="1.在（用户环境变量）中修改GOPATH"></a>1.在（用户环境变量）中修改GOPATH</h2><p>把对应的变量改为你自己的目录路径即可</p>
-<h4 id="2-GOBIN"><a href="#2-GOBIN" class="headerlink" title="2.GOBIN"></a>2.GOBIN</h4><p>这个可以不做，我做这个主要是让后期<code>install</code>的文件和<code>bin</code>目录下的开发者工具相隔离</p>
-<h4 id="3-修改GOCACHE"><a href="#3-修改GOCACHE" class="headerlink" title="3.修改GOCACHE"></a>3.修改GOCACHE</h4><p>我也是简单地修改了一下<code>GOCACHE</code>,我是放在<code>GOPATH</code>之下的</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">go env <span class="hljs-literal">-w</span> GOCACHE=yourpath<br></code></pre></td></tr></table></figure>
-
-<h2 id="4-设置代理"><a href="#4-设置代理" class="headerlink" title="4.设置代理"></a>4.设置代理</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1773630">https://cloud.tencent.com/developer/article/1773630</a></p>
+<p>以下是 IEEE754标准的f32</p>
+<table>
+<thead>
+<tr>
+<th>31</th>
+<th>30</th>
+<th>29</th>
+<th>28</th>
+<th>27</th>
+<th>26</th>
+<th>25</th>
+<th>24</th>
+<th>23</th>
+<th>22</th>
+<th>21</th>
+<th>20</th>
+<th>19</th>
+<th>18</th>
+<th>17</th>
+<th>16</th>
+<th>15</th>
+<th>14</th>
+<th>13</th>
+<th>12</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>符号位</td>
+<td>exponent</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>exponent</td>
+<td>fraction</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>11</th>
+<th>10</th>
+<th>9</th>
+<th>8</th>
+<th>7</th>
+<th>6</th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+<th>2</th>
+<th>1</th>
+<th>0</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>fraction</td>
+</tr>
+</tbody></table>
+<h2 id="具体的计算"><a href="#具体的计算" class="headerlink" title="具体的计算"></a>具体的计算</h2><p>1.如果0，32位存储全为0</p>
+<p>2.如果不为零，进行上述的计算方案，负数在符号位置1，进行二进制的计算将思维中的十进制浮点数转换为二进制。</p>
+<p>计算机底层如何处理我不清楚，这里我根据浮点数的算数处理留下以下结论：</p>
+<ul>
+<li>如果存在整数位，exponent &#x3D; 整数位的位数 - 1, fraction 扔掉最高位的1</li>
+<li>如果不存在整数位，我们需要找到小数位二进制的第一个1，1前面的0 以 exponent &#x3D; 0的数量 来表示</li>
+</ul>
+<h2 id="反馈"><a href="#反馈" class="headerlink" title="反馈"></a>反馈</h2><p>为了更简单的得到反馈：我使用了浏览器为载体，下面是我的代码仓库</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/sunboyZgz/interesting/blob/main/src/components/009.vue">https://github.com/sunboyZgz/interesting/blob/main/src/components/009.vue</a></p>
 
                 
               </div>
@@ -451,7 +473,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%B7%A5%E5%85%B7/" class="category-chain-item">工具</a>
+  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%BA%95%E5%B1%82%E7%9F%A5%E8%AF%86/" class="category-chain-item">计算机底层知识</a>
   
   
 
@@ -466,7 +488,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E9%85%8D%E7%BD%AE/">#配置</a>
+        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">#计算机组成原理</a>
       
     </div>
   
@@ -478,8 +500,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>新的篇章</div>
-      <div>http://example.com/2022/08/23/My-new-way/</div>
+      <div>浮点数总结</div>
+      <div>http://example.com/2022/10/12/float-numeric/</div>
     </div>
     <div class="license-meta">
       
@@ -491,7 +513,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年8月23日</div>
+          <div>2022年10月12日</div>
         </div>
       
       
@@ -523,15 +545,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/08/24/newblog/" title="新的博客">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">新的博客</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/09/23/awesome-rust-1/" title="awesome-rust-1(IdentifierPattern)">
+                        <span class="hidden-mobile">awesome-rust-1(IdentifierPattern)</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
