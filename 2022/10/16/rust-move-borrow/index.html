@@ -16,16 +16,16 @@
   <meta name="author" content="sunboyZgz">
   <meta name="keywords" content="technic">
   
-    <meta name="description" content="Rust IdentifierPattern - refrust 启动！这是awesome-rust的第一篇文章，所有文章的内容都将以问题由来+问题解决+官文链接的方案来解释（当然由于个人能力问题官文中的内容可能不能理解到位，请海涵）。 rust的官方reference：https:&#x2F;&#x2F;doc.rust-lang.org&#x2F;reference&#x2F;introduction.html 。我认为所有学习ru">
+    <meta name="description" content="一题看所有权问题写文原因众所周知，在rust中所有权问题是一个非常重要的问题，他直接影响了一个程序的性能。另外配合上rust的检查器+rust的生命周期，他能在很多情况下及时反馈出程序的潜在问题，这篇文章将会用一个leetcode题目分析一下如何在编写程序的时候进行合理的思考。   https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;merge-two-sorted-lists 【注】：本文">
 <meta property="og:type" content="article">
-<meta property="og:title" content="awesome-rust-1(IdentifierPattern)">
-<meta property="og:url" content="http://example.com/2022/09/23/awesome-rust-1/index.html">
+<meta property="og:title" content="rust-move-borrow">
+<meta property="og:url" content="http://example.com/2022/10/16/rust-move-borrow/index.html">
 <meta property="og:site_name" content="sunboy">
-<meta property="og:description" content="Rust IdentifierPattern - refrust 启动！这是awesome-rust的第一篇文章，所有文章的内容都将以问题由来+问题解决+官文链接的方案来解释（当然由于个人能力问题官文中的内容可能不能理解到位，请海涵）。 rust的官方reference：https:&#x2F;&#x2F;doc.rust-lang.org&#x2F;reference&#x2F;introduction.html 。我认为所有学习ru">
+<meta property="og:description" content="一题看所有权问题写文原因众所周知，在rust中所有权问题是一个非常重要的问题，他直接影响了一个程序的性能。另外配合上rust的检查器+rust的生命周期，他能在很多情况下及时反馈出程序的潜在问题，这篇文章将会用一个leetcode题目分析一下如何在编写程序的时候进行合理的思考。   https:&#x2F;&#x2F;leetcode.cn&#x2F;problems&#x2F;merge-two-sorted-lists 【注】：本文">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/rust.png">
-<meta property="article:published_time" content="2022-09-23T16:00:32.000Z">
-<meta property="article:modified_time" content="2022-10-16T08:38:14.713Z">
+<meta property="article:published_time" content="2022-10-16T13:07:44.000Z">
+<meta property="article:modified_time" content="2022-10-16T08:38:14.717Z">
 <meta property="article:author" content="sunboyZgz">
 <meta property="article:tag" content="newbie">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>awesome-rust-1(IdentifierPattern) 😄 sunboy</title>
+  <title>rust-move-borrow 😄 sunboy</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +212,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="awesome-rust-1(IdentifierPattern)"></span>
+            <span id="subtitle" data-typed-text="rust-move-borrow"></span>
           
         </div>
 
@@ -223,8 +223,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-23 16:00" pubdate>
-          2022年9月23日 下午
+        <time datetime="2022-10-16 13:07" pubdate>
+          2022年10月16日 下午
         </time>
       </span>
     
@@ -235,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          3.5k 字
         
       </span>
     
@@ -246,7 +246,7 @@
         
         
         
-          23 分钟
+          30 分钟
         
       </span>
     
@@ -329,7 +329,7 @@
       
         <a href="/2022/09/23/awesome-rust-1/" title="awesome-rust-1(IdentifierPattern)"
            class="list-group-item list-group-item-action
-           active">
+           ">
           <span class="category-post">awesome-rust-1(IdentifierPattern)</span>
         </a>
       
@@ -338,7 +338,7 @@
       
         <a href="/2022/10/16/rust-move-borrow/" title="rust-move-borrow"
            class="list-group-item list-group-item-action
-           ">
+           active">
           <span class="category-post">rust-move-borrow</span>
         </a>
       
@@ -362,51 +362,66 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">awesome-rust-1(IdentifierPattern)</h1>
+            <h1 style="display: none">rust-move-borrow</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Rust-IdentifierPattern-ref"><a href="#Rust-IdentifierPattern-ref" class="headerlink" title="Rust IdentifierPattern - ref"></a>Rust <em>IdentifierPattern</em> - ref</h1><h2 id="rust-启动！"><a href="#rust-启动！" class="headerlink" title="rust 启动！"></a>rust 启动！</h2><p>这是awesome-rust的第一篇文章，所有文章的内容都将以问题由来+问题解决+官文链接的方案来解释（当然由于个人能力问题官文中的内容可能不能理解到位，请海涵）。</p>
-<p>rust的官方reference：<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/introduction.html">https://doc.rust-lang.org/reference/introduction.html</a> 。我认为所有学习rust的同学都应该知道这份参考手册的存在，这份手册真的是太棒辣。</p>
-<h2 id="IdentifierPattern"><a href="#IdentifierPattern" class="headerlink" title="IdentifierPattern"></a><em>IdentifierPattern</em></h2><h4 id="问题产出"><a href="#问题产出" class="headerlink" title="问题产出"></a>问题产出</h4><p>我在<code>codewars</code>平台进行练习题目 [ <a target="_blank" rel="noopener" href="https://www.codewars.com/kata/52bef5e3588c56132c0003bc">https://www.codewars.com/kata/52bef5e3588c56132c0003bc</a> ] 后与他人代码对比后发现了 <code>ref</code> 正确使用的姿势之一。</p>
-<p>这里值得提一嘴的是，对于刚步入一门新语言的“萌新”，<code>codewars</code>的题目推荐非常适合用于熟悉语言特点与语言标准库。</p>
-<p>下面这个是Node的struct，同时Node并没有实现<code>Clone</code>或者<code>Copy</code>。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span> &#123;<br>    value: <span class="hljs-type">u32</span>,<br>    left: <span class="hljs-type">Option</span>&lt;<span class="hljs-type">Box</span>&lt;Node&gt;&gt;,<br>    right: <span class="hljs-type">Option</span>&lt;<span class="hljs-type">Box</span>&lt;Node&gt;&gt;,<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="代码对比"><a href="#代码对比" class="headerlink" title="代码对比"></a>代码对比</h4><p><strong>我的代码</strong></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">traverse</span>(last_nodes: &amp;<span class="hljs-keyword">mut</span> VecDeque&lt;&amp;Node&gt;, result: &amp;<span class="hljs-keyword">mut</span> <span class="hljs-type">Vec</span>&lt;<span class="hljs-type">u32</span>&gt;) &#123;<br>    <span class="hljs-keyword">if</span> last_nodes.<span class="hljs-title function_ invoke__">len</span>() == <span class="hljs-number">0</span> &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">childrens</span> = VecDeque::<span class="hljs-title function_ invoke__">new</span>();<br>    <span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(node) = last_nodes.<span class="hljs-title function_ invoke__">pop_front</span>() &#123;<br>      result.<span class="hljs-title function_ invoke__">push</span>(node.value);<br>      <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(n) = &amp;node.left &#123;<br>          childrens.<span class="hljs-title function_ invoke__">push_back</span>(n.<span class="hljs-title function_ invoke__">as_ref</span>());<br>      &#125;<br>      <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(n) = &amp;node.right &#123;<br>          childrens.<span class="hljs-title function_ invoke__">push_back</span>(n.<span class="hljs-title function_ invoke__">as_ref</span>());<br>      &#125;<br>    &#125;<br>    <span class="hljs-title function_ invoke__">traverse</span>(&amp;<span class="hljs-keyword">mut</span> childrens, result)<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p><strong>其他人的代码</strong></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">tree_by_levels_best</span>(root: &amp;Node) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Vec</span>&lt;<span class="hljs-type">u32</span>&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">result</span> = <span class="hljs-built_in">vec!</span>[];<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">queue</span>: VecDeque&lt;&amp;Node&gt; = VecDeque::<span class="hljs-title function_ invoke__">from</span>([root]);<br>    <span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(n) = queue.<span class="hljs-title function_ invoke__">pop_front</span>() &#123;<br>        result.<span class="hljs-title function_ invoke__">push</span>(n.value);<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(<span class="hljs-keyword">ref</span> l) = n.left &#123; <span class="hljs-comment">//关键的不同点</span><br>            queue.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*l);<br>        &#125;<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(<span class="hljs-keyword">ref</span> r) = n.right &#123;<br>            queue.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*r);<br>        &#125;<br>    &#125;<br>    result<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><p>由于平时常用的<code>IdentifierPattern</code>多是 <code>mut</code>,而这里出现了 <code>ref</code>，虽然从字面上或者代码上我们可以理解 <code>ref</code> 的作用，但是我还是想要找出使用这个 pattern 的条件。 </p>
-<p>官文链接：<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/patterns.html#identifier-patterns">https://doc.rust-lang.org/reference/patterns.html#identifier-patterns</a> 。</p>
-<p>官文中明确指出了，标识符的pattern默认的两种做法</p>
-<p>1.会优先考虑把标识符所表示的变量绑定到它所依赖的值的一份copy上。</p>
-<p>2.会优先考虑把依赖数据move到变量中</p>
-<p>关于copy，当然就是实现 Rust的 <code>Copy Trait</code>咯。</p>
-<p>关于move，这里贴出官文的链接：<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/expressions.html?highlight=move#moved-and-copied-types">https://doc.rust-lang.org/reference/expressions.html?highlight=move#moved-and-copied-types</a> ，这里面提出了能够move的四种情况。在这里我认为不能进行move的主要原因是第一种情况</p>
+                <h1 id="一题看所有权问题"><a href="#一题看所有权问题" class="headerlink" title="一题看所有权问题"></a>一题看所有权问题</h1><h2 id="写文原因"><a href="#写文原因" class="headerlink" title="写文原因"></a>写文原因</h2><p>众所周知，在rust中所有权问题是一个非常重要的问题，他直接影响了一个程序的性能。另外配合上rust的检查器+rust的生命周期，他能在很多情况下及时反馈出程序的潜在问题，这篇文章将会用一个leetcode题目分析一下如何在编写程序的时候进行合理的思考。  </p>
+<p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/merge-two-sorted-lists">https://leetcode.cn/problems/merge-two-sorted-lists</a></p>
+<p><strong>【注】：</strong>本文并不是算的讲解，最好在能够思考出算法的实现方案下阅读。</p>
+<h2 id="move与borrow"><a href="#move与borrow" class="headerlink" title="move与borrow"></a>move与borrow</h2><p>关于变量表达式的问题：<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/expressions.html?highlight=move#place-expressions-and-value-expressions">https://doc.rust-lang.org/reference/expressions.html?highlight=move#place-expressions-and-value-expressions</a></p>
+<p><strong>关于这页相关理论，下面这句话尤为需要注意，这句话在循环中能起到非常大的作用。</strong></p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/variables.html">Variables</a> which are not currently borrowed.</p>
+<p>After moving out of a place expression that evaluates to a local variable, the location is deinitialized and cannot be read from again until it is reinitialized</p>
 </blockquote>
-<p>这里摘出关键的不同点进行拆分</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(<span class="hljs-keyword">ref</span> l) = n.left &#123; <br>    queue.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*l);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>关于所有权的理论在这个链接中有详细的说明：<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html">https://doc.rust-lang.org/book/ch04-00-understanding-ownership.html</a></p>
+<p>下面我们简单的讲一下，接下来需要的理论</p>
+<h4 id="1-所有权"><a href="#1-所有权" class="headerlink" title="1.所有权"></a>1.所有权</h4><p>对于一个临时且不是reference的变量我们可以认为我们拥有了它的所有权，此时对于我们声明的变量我们可以认为我们拥有了它的所有权，变量内存地址位置就会开辟出装载该变量所需要的内存空间。例如：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">node</span> = ListNode::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">1</span>);<br></code></pre></td></tr></table></figure>
 
-<p>如果没有 <code>ref</code>，代码会以以下方式呈现，当rust的编译器进行checker时会发现我们的Node节点没有Copy的实现，同时在<code>Some(l) = n.left</code>这个<code>destructuring subpatterns</code>中发现l依赖的数据是<code>Box&lt;Node&gt;</code> 关于<code>Box</code>它相当于是一种共享型的能力，因此也并不满足<code>move</code>触发的条件。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(l) = n.left &#123; <br>    queue.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*l);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="2-可变性"><a href="#2-可变性" class="headerlink" title="2.可变性"></a>2.可变性</h4><p>默认情况下rust视为我们不能对变量的内存空间进行操作，即使拥有所有权依旧需要<code>mut</code>pattern来提供可操作该区域内存空间的能力。即使你是房子的主人，也需要先用钥匙打开房子的门。嗯！没错，就是这种感觉。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">node</span> = ListNode::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">1</span>);<br>node.next = <span class="hljs-title function_ invoke__">Some</span>(<span class="hljs-type">Box</span>::<span class="hljs-title function_ invoke__">new</span>(ListNode::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">2</span>)));<br><span class="hljs-comment">//下面是没有mut编译器的报错</span><br><span class="hljs-comment">//cannot assign to `node.next`, as `node` is not declared as mutable cannot assign</span><br></code></pre></td></tr></table></figure>
 
-<p>但是有了上面的<code>ref</code>我们会改变 identifier pattern 的默认绑定方式，相当于采用了下面的做法</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(l) = &amp;n.left &#123; <br>    queue.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*l);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="3-不可变借用"><a href="#3-不可变借用" class="headerlink" title="3.不可变借用"></a>3.不可变借用</h4><p>借用这个概念真的非常贴近我们日常的表述了，就是东西我借给你了，但是你要原模原样得还给我。</p>
+<p>在代码中，我们可以理解为将数据内存空间的读取能力分发给了其他变量。</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-variable">node</span> = ListNode::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">1</span>);<br><span class="hljs-keyword">let</span> <span class="hljs-variable">node2</span> = &amp;node;<br></code></pre></td></tr></table></figure>
 
+<h4 id="4-可变借用"><a href="#4-可变借用" class="headerlink" title="4.可变借用"></a>4.可变借用</h4><p>与不可变借用相似，提供了可修改原有数据内存空间的能力。东西仍然在我这里，但是你修改之后，我也这边也产生了变化。</p>
+<p>但是在这种借用前，这个东西首先是能够修改的，也就是绑定了<code>mut</code> pattern。另外可变借用的操作符号是<code>&amp;mut</code>。</p>
+<p>这篇官文也说明了使用可变借用的其他性质：<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html#mutable-references">https://doc.rust-lang.org/book/ch04-02-references-and-borrowing.html#mutable-references</a></p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">node</span> = ListNode::<span class="hljs-title function_ invoke__">new</span>(<span class="hljs-number">1</span>);<br><span class="hljs-built_in">println!</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, &amp;node.val);<br><span class="hljs-keyword">let</span> <span class="hljs-variable">node2</span> = &amp;<span class="hljs-keyword">mut</span> node;<br>node2.val = <span class="hljs-number">2</span>;<br><span class="hljs-title function_ invoke__">println</span>(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, node.val);<br></code></pre></td></tr></table></figure>
 
+<h2 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h2><p>优秀的代码在产出前一定有很多的思考，但是在产出之前rust会让你增加对于代码结构编织的思考，不然你就可能只能将伪代码保存在你的脑子里了。对于我们这样的新手如果不认真思考的话就不是项目规模化后的问题了，而是能不能让编译器爸爸放你过关😂。</p>
+<h4 id="算法简析：对于两条链合并情况的分析"><a href="#算法简析：对于两条链合并情况的分析" class="headerlink" title="算法简析：对于两条链合并情况的分析"></a>算法简析：对于两条链合并情况的分析</h4><ol>
+<li>两条空链</li>
+<li>只有一条 链&#x2F;子链 存在</li>
+<li>两条 链&#x2F;子链 都存在</li>
+</ol>
+<h4 id="将思路具体化"><a href="#将思路具体化" class="headerlink" title="将思路具体化"></a>将思路具体化</h4><p>1.创建防止第一个节点就是NULL而无法正确执行算法的辅助节点</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">head</span> = ListNode::<span class="hljs-title function_ invoke__">new</span>(-<span class="hljs-number">101</span>);<br><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">cur</span> = &amp;<span class="hljs-keyword">mut</span> head;					 <span class="hljs-comment">//cur变量的内存地址中应该要记录当前连接到的最后一个节点，另外最后一个点就是cur记录的是一个地址，但是我们在拼接时需要修改这个地址，而不单单是修改地址所指的数据空间。</span><br>...<br>head.next<br></code></pre></td></tr></table></figure>
 
-<p>另外，我在这个学习的过程中还发现了一个有趣的问题，就是rust的自动类型推测系统与实际需要效果的差异。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">queue</span>: VecDeque&lt;&amp;Node&gt; = VecDeque::<span class="hljs-title function_ invoke__">from</span>([root]); <span class="hljs-comment">//这里是显示类型</span><br></code></pre></td></tr></table></figure>
+<p>2.在两条子链都存在的情况下进行的拼接操作</p>
+<p>While let expression:<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/expressions/loop-expr.html#predicate-pattern-loops">https://doc.rust-lang.org/reference/expressions/loop-expr.html#predicate-pattern-loops</a></p>
+<p>Match expression: <a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/expressions/match-expr.html">https://doc.rust-lang.org/reference/expressions/match-expr.html</a></p>
+<blockquote>
+<p>If the scrutinee expression is a <a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/expressions.html#place-expressions-and-value-expressions">value expression</a>, it is first evaluated into a temporary location, and the resulting value is sequentially compared to the patterns in the arms until a match is found.</p>
+</blockquote>
+<p>针对这个问题我们可以做出以下两种思考</p>
+<p>思考一：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> (<span class="hljs-title function_ invoke__">Some</span>(n1), <span class="hljs-title function_ invoke__">Some</span>(n2)) = (&amp;list1, &amp;list2) &#123;<span class="hljs-comment">//在这里使用借用，这样不会导致list的所有权转移到这里，然后后面就会无法访问list1，list2</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">childrens</span> = VecDeque::<span class="hljs-title function_ invoke__">new</span>(); <span class="hljs-comment">//这里会infer出 VecDeque&lt;&amp;Box&lt;Node&gt;&gt;,与实际需求略有差异</span><br>...<br>childrens.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*n);<br>...<br></code></pre></td></tr></table></figure>
+<p>思考二：</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> (<span class="hljs-title function_ invoke__">Some</span>(n1), <span class="hljs-title function_ invoke__">Some</span>(n2)) = (list1, list2) &#123;<span class="hljs-comment">//这就是转移所有权并使用tuple pattern进行结构赋值，这样n1，n2所有权也在当前作用域下。但是使用这种方案我们需要进行一点修改，因为这样的所有权解构会造成list1，list2无法在后续访问</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>欢迎各位前来指点，这是我的SO Question: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/73824648/rust-why-compiler-infers-a-different-type-beyond-our-expection">https://stackoverflow.com/questions/73824648/rust-why-compiler-infers-a-different-type-beyond-our-expection</a></p>
+<p>3.取小的节点进行拼接</p>
+<p>思考一的body</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> (<span class="hljs-title function_ invoke__">Some</span>(n1), <span class="hljs-title function_ invoke__">Some</span>(n2)) = (&amp;list1, &amp;list2) &#123;<span class="hljs-comment">//list1在未重分配前会飘红</span><br>	<span class="hljs-keyword">if</span> n1.val &lt; n2.val &#123;<br>      cur.next = list1; <span class="hljs-comment">//1.这里move进去，当我们写到这里在IDE环境我们会发现 &amp;list1 这里出现 borrow after move的飘红报错，这时请用好上面说到的 重分配理论，请自信使用为list1分配一个所有权的value的代码</span><br>      cur = cur.next.<span class="hljs-title function_ invoke__">as_mut</span>().<span class="hljs-title function_ invoke__">unwrap</span>();  <span class="hljs-comment">//因为cur是一个可变借用，所以需要一个可变借用</span><br>      list1 = cur.next.<span class="hljs-title function_ invoke__">take</span>(); <span class="hljs-comment">//2.从cur.next这里move出来，并未list1重分配</span><br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">//相同道理</span><br>  &#125;<br>&#125;<br>cur.next = <span class="hljs-keyword">if</span> list1.<span class="hljs-title function_ invoke__">is_some</span>() &#123; list1 &#125; <span class="hljs-keyword">else</span> &#123; list2 &#125;;<br></code></pre></td></tr></table></figure>
+
+<p>思考二的body</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">loop</span> &#123;<br>    <span class="hljs-keyword">if</span> list1.<span class="hljs-title function_ invoke__">is_some</span>() &amp;&amp; list2.<span class="hljs-title function_ invoke__">is_some</span>() &#123;<span class="hljs-comment">//这么做是为了防止while let最后一次解构引起后续list1，list2无法borrow的问题</span><br>        <span class="hljs-keyword">let</span> (n1, n2) = (list1.<span class="hljs-title function_ invoke__">unwrap</span>(), list2.<span class="hljs-title function_ invoke__">unwrap</span>());<br>        <span class="hljs-keyword">if</span> &amp;n1.val &lt; &amp;n2.val &#123;<br>            cur.next = <span class="hljs-title function_ invoke__">Some</span>(n1);<br>            cur = cur.next.<span class="hljs-title function_ invoke__">as_mut</span>().<span class="hljs-title function_ invoke__">unwrap</span>();<br>            list1 = cur.next.<span class="hljs-title function_ invoke__">take</span>();<br>            list2 = <span class="hljs-title function_ invoke__">Some</span>(n2)<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">//相同道理</span><br>        &#125;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br>cur.next = <span class="hljs-keyword">if</span> list1.<span class="hljs-title function_ invoke__">is_some</span>() &#123; list1 &#125; <span class="hljs-keyword">else</span> &#123; list2 &#125;;<br></code></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在rust代码的编写中我们需要更多地去思考，而不是过度依赖于编译器，要做到有理有据。过度依赖编译器很容易不自信啦。</p>
 
                 
               </div>
@@ -452,8 +467,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>awesome-rust-1(IdentifierPattern)</div>
-      <div>http://example.com/2022/09/23/awesome-rust-1/</div>
+      <div>rust-move-borrow</div>
+      <div>http://example.com/2022/10/16/rust-move-borrow/</div>
     </div>
     <div class="license-meta">
       
@@ -465,7 +480,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年9月23日</div>
+          <div>2022年10月16日</div>
         </div>
       
       
@@ -497,18 +512,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/12/float-numeric/" title="浮点数总结">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浮点数总结</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/21/rust-iter/" title="一文入门rust iterator">
-                        <span class="hidden-mobile">一文入门rust iterator</span>
+                      <a href="/2022/10/12/float-numeric/" title="浮点数总结">
+                        <span class="hidden-mobile">浮点数总结</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
