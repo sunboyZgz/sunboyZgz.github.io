@@ -16,26 +16,28 @@
   <meta name="author" content="sunboyZgz">
   <meta name="keywords" content="technic">
   
-    <meta name="description" content="Rust IdentifierPattern - refrust 启动！这是awesome-rust的第一篇文章，所有文章的内容都将以问题由来+问题解决+官文链接的方案来解释（当然由于个人能力问题官文中的内容可能不能理解到位，请海涵）。 rust的官方reference：https:&#x2F;&#x2F;doc.rust-lang.org&#x2F;reference&#x2F;introduction.html 。我认为所有学习ru">
+    <meta name="description" content="更换电池事情起因因为我有剥手机壳的坏习惯，剥着剥着，哎呀，我就发现了手机后盖闭合不紧密，但是这可不是一个简单的问题，一般来说手机中没有突起部分手机后盖与机体的粘胶是可以保证非常久的密封性的，所以我下意识地就想到了电池鼓包的情况，当然我没有什么特别的依据是证明这件事。由于我的手机也已经用了4年之久了，所以我这次决定拆开它一探究竟。 勇气是第一步每一个人小时候或多或少都会拆掉几个玩具，看到啥新鲜东西就">
 <meta property="og:type" content="article">
-<meta property="og:title" content="awesome-rust-1(IdentifierPattern)">
-<meta property="og:url" content="http://example.com/2022/09/23/awesome-rust-1/index.html">
+<meta property="og:title" content="更换我的手机电池">
+<meta property="og:url" content="http://example.com/2022/11/14/change-mobile-battery/index.html">
 <meta property="og:site_name" content="sunboy">
-<meta property="og:description" content="Rust IdentifierPattern - refrust 启动！这是awesome-rust的第一篇文章，所有文章的内容都将以问题由来+问题解决+官文链接的方案来解释（当然由于个人能力问题官文中的内容可能不能理解到位，请海涵）。 rust的官方reference：https:&#x2F;&#x2F;doc.rust-lang.org&#x2F;reference&#x2F;introduction.html 。我认为所有学习ru">
+<meta property="og:description" content="更换电池事情起因因为我有剥手机壳的坏习惯，剥着剥着，哎呀，我就发现了手机后盖闭合不紧密，但是这可不是一个简单的问题，一般来说手机中没有突起部分手机后盖与机体的粘胶是可以保证非常久的密封性的，所以我下意识地就想到了电池鼓包的情况，当然我没有什么特别的依据是证明这件事。由于我的手机也已经用了4年之久了，所以我这次决定拆开它一探究竟。 勇气是第一步每一个人小时候或多或少都会拆掉几个玩具，看到啥新鲜东西就">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/rust.png">
-<meta property="article:published_time" content="2022-09-23T16:00:32.000Z">
+<meta property="og:image" content="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-content/change-battery1.jpg">
+<meta property="og:image" content="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-content/change-battery3.jpg">
+<meta property="og:image" content="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-content/change-battery2.jpg">
+<meta property="article:published_time" content="2022-11-14T14:56:59.000Z">
 <meta property="article:modified_time" content="2022-11-14T08:38:43.153Z">
 <meta property="article:author" content="sunboyZgz">
-<meta property="article:tag" content="newbie">
+<meta property="article:tag" content="动手">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/rust.png">
+<meta name="twitter:image" content="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-content/change-battery1.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>awesome-rust-1(IdentifierPattern) 😄 sunboy</title>
+  <title>更换我的手机电池 😄 sunboy</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -212,7 +214,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="awesome-rust-1(IdentifierPattern)"></span>
+            <span id="subtitle" data-typed-text="更换我的手机电池"></span>
           
         </div>
 
@@ -223,8 +225,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-09-23 16:00" pubdate>
-          2022年9月23日 下午
+        <time datetime="2022-11-14 14:56" pubdate>
+          2022年11月14日 下午
         </time>
       </span>
     
@@ -235,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.6k 字
+          443 字
         
       </span>
     
@@ -246,7 +248,7 @@
         
         
         
-          23 分钟
+          4 分钟
         
       </span>
     
@@ -299,17 +301,17 @@
     
     <div class="category row nomargin-x">
       <a class="category-item 
-          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="rust"
-        id="heading-72812e30873455dcee2ce2d1ee26e4ab" role="tab" data-toggle="collapse" href="#collapse-72812e30873455dcee2ce2d1ee26e4ab"
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="日常"
+        id="heading-943e6d3324693188a3f1955a7f921a69" role="tab" data-toggle="collapse" href="#collapse-943e6d3324693188a3f1955a7f921a69"
         aria-expanded="true"
       >
-        rust
-        <span class="list-group-count">(3)</span>
+        日常
+        <span class="list-group-count">(1)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
-      <div class="category-collapse collapse show" id="collapse-72812e30873455dcee2ce2d1ee26e4ab"
-           role="tabpanel" aria-labelledby="heading-72812e30873455dcee2ce2d1ee26e4ab">
+      <div class="category-collapse collapse show" id="collapse-943e6d3324693188a3f1955a7f921a69"
+           role="tabpanel" aria-labelledby="heading-943e6d3324693188a3f1955a7f921a69">
         
         
           
@@ -318,28 +320,10 @@
     
       
       
-        <a href="/2022/09/21/rust-iter/" title="一文入门rust iterator"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">一文入门rust iterator</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/09/23/awesome-rust-1/" title="awesome-rust-1(IdentifierPattern)"
+        <a href="/2022/11/14/change-mobile-battery/" title="更换我的手机电池"
            class="list-group-item list-group-item-action
            active">
-          <span class="category-post">awesome-rust-1(IdentifierPattern)</span>
-        </a>
-      
-    
-      
-      
-        <a href="/2022/10/16/rust-move-borrow/" title="rust-move-borrow"
-           class="list-group-item list-group-item-action
-           ">
-          <span class="category-post">rust-move-borrow</span>
+          <span class="category-post">更换我的手机电池</span>
         </a>
       
     
@@ -362,52 +346,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">awesome-rust-1(IdentifierPattern)</h1>
+            <h1 style="display: none">更换我的手机电池</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="Rust-IdentifierPattern-ref"><a href="#Rust-IdentifierPattern-ref" class="headerlink" title="Rust IdentifierPattern - ref"></a>Rust <em>IdentifierPattern</em> - ref</h1><h2 id="rust-启动！"><a href="#rust-启动！" class="headerlink" title="rust 启动！"></a>rust 启动！</h2><p>这是awesome-rust的第一篇文章，所有文章的内容都将以问题由来+问题解决+官文链接的方案来解释（当然由于个人能力问题官文中的内容可能不能理解到位，请海涵）。</p>
-<p>rust的官方reference：<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/introduction.html">https://doc.rust-lang.org/reference/introduction.html</a> 。我认为所有学习rust的同学都应该知道这份参考手册的存在，这份手册真的是太棒辣。</p>
-<h2 id="IdentifierPattern"><a href="#IdentifierPattern" class="headerlink" title="IdentifierPattern"></a><em>IdentifierPattern</em></h2><h4 id="问题产出"><a href="#问题产出" class="headerlink" title="问题产出"></a>问题产出</h4><p>我在<code>codewars</code>平台进行练习题目 [ <a target="_blank" rel="noopener" href="https://www.codewars.com/kata/52bef5e3588c56132c0003bc">https://www.codewars.com/kata/52bef5e3588c56132c0003bc</a> ] 后与他人代码对比后发现了 <code>ref</code> 正确使用的姿势之一。</p>
-<p>这里值得提一嘴的是，对于刚步入一门新语言的“萌新”，<code>codewars</code>的题目推荐非常适合用于熟悉语言特点与语言标准库。</p>
-<p>下面这个是Node的struct，同时Node并没有实现<code>Clone</code>或者<code>Copy</code>。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">struct</span> <span class="hljs-title class_">Node</span> &#123;<br>    value: <span class="hljs-type">u32</span>,<br>    left: <span class="hljs-type">Option</span>&lt;<span class="hljs-type">Box</span>&lt;Node&gt;&gt;,<br>    right: <span class="hljs-type">Option</span>&lt;<span class="hljs-type">Box</span>&lt;Node&gt;&gt;,<br>&#125;<br></code></pre></td></tr></table></figure>
+                <h1 id="更换电池"><a href="#更换电池" class="headerlink" title="更换电池"></a>更换电池</h1><h4 id="事情起因"><a href="#事情起因" class="headerlink" title="事情起因"></a>事情起因</h4><p>因为我有剥手机壳的坏习惯，剥着剥着，哎呀，我就发现了手机后盖闭合不紧密，但是这可不是一个简单的问题，一般来说手机中没有突起部分手机后盖与机体的粘胶是可以保证非常久的密封性的，所以我下意识地就想到了电池鼓包的情况，当然我没有什么特别的依据是证明这件事。由于我的手机也已经用了4年之久了，所以我这次决定拆开它一探究竟。</p>
+<h4 id="勇气是第一步"><a href="#勇气是第一步" class="headerlink" title="勇气是第一步"></a>勇气是第一步</h4><p>每一个人小时候或多或少都会拆掉几个玩具，看到啥新鲜东西就想往嘴里塞。不知道什么时候，我们失去了年幼时那份挑战未知的勇气，得到了更多的“真理”，我们就会越缺失对问题的质疑。幼时我们拆掉玩具根本不会担心它会不会坏，当然有时我们能将它重组，有时我们只能将它扔到垃圾桶里。我认为学习一点简答的拆卸是需要的，一年前我拆了笔记本后盖装了两个风扇，卸下cpu涂上硅脂，虽然是件微不足道的小事，但是很多人会担心自己完不成而不敢下手。有些人则是不愿意去学习相关的知识，花钱交给了相关人士。所以这次我依旧秉承我的旧风格：“能自己完成的小事绝对不交’智商税‘”。</p>
+<h4 id="纪念"><a href="#纪念" class="headerlink" title="纪念"></a>纪念</h4><img src="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-content/change-battery1.jpg" srcset="/img/loading.gif" lazyload style="zoom: 25%;" />
 
-<h4 id="代码对比"><a href="#代码对比" class="headerlink" title="代码对比"></a>代码对比</h4><p><strong>我的代码</strong></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">traverse</span>(last_nodes: &amp;<span class="hljs-keyword">mut</span> VecDeque&lt;&amp;Node&gt;, result: &amp;<span class="hljs-keyword">mut</span> <span class="hljs-type">Vec</span>&lt;<span class="hljs-type">u32</span>&gt;) &#123;<br>    <span class="hljs-keyword">if</span> last_nodes.<span class="hljs-title function_ invoke__">len</span>() == <span class="hljs-number">0</span> &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">childrens</span> = VecDeque::<span class="hljs-title function_ invoke__">new</span>();<br>    <span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(node) = last_nodes.<span class="hljs-title function_ invoke__">pop_front</span>() &#123;<br>      result.<span class="hljs-title function_ invoke__">push</span>(node.value);<br>      <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(n) = &amp;node.left &#123;<br>          childrens.<span class="hljs-title function_ invoke__">push_back</span>(n.<span class="hljs-title function_ invoke__">as_ref</span>());<br>      &#125;<br>      <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(n) = &amp;node.right &#123;<br>          childrens.<span class="hljs-title function_ invoke__">push_back</span>(n.<span class="hljs-title function_ invoke__">as_ref</span>());<br>      &#125;<br>    &#125;<br>    <span class="hljs-title function_ invoke__">traverse</span>(&amp;<span class="hljs-keyword">mut</span> childrens, result)<br>&#125;<br></code></pre></td></tr></table></figure>
+<img src="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-content/change-battery3.jpg" srcset="/img/loading.gif" lazyload style="zoom:25%;" />
 
-<p><strong>其他人的代码</strong></p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">fn</span> <span class="hljs-title function_">tree_by_levels_best</span>(root: &amp;Node) <span class="hljs-punctuation">-&gt;</span> <span class="hljs-type">Vec</span>&lt;<span class="hljs-type">u32</span>&gt; &#123;<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">result</span> = <span class="hljs-built_in">vec!</span>[];<br>    <span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">queue</span>: VecDeque&lt;&amp;Node&gt; = VecDeque::<span class="hljs-title function_ invoke__">from</span>([root]);<br>    <span class="hljs-keyword">while</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(n) = queue.<span class="hljs-title function_ invoke__">pop_front</span>() &#123;<br>        result.<span class="hljs-title function_ invoke__">push</span>(n.value);<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(<span class="hljs-keyword">ref</span> l) = n.left &#123; <span class="hljs-comment">//关键的不同点</span><br>            queue.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*l);<br>        &#125;<br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(<span class="hljs-keyword">ref</span> r) = n.right &#123;<br>            queue.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*r);<br>        &#125;<br>    &#125;<br>    result<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h4 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h4><p>由于平时常用的<code>IdentifierPattern</code>多是 <code>mut</code>,而这里出现了 <code>ref</code>，虽然从字面上或者代码上我们可以理解 <code>ref</code> 的作用，但是我还是想要找出使用这个 pattern 的条件。 </p>
-<p>官文链接：<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/patterns.html#identifier-patterns">https://doc.rust-lang.org/reference/patterns.html#identifier-patterns</a> 。</p>
-<p>官文中明确指出了，标识符的pattern默认的两种做法</p>
-<p>1.会优先考虑把标识符所表示的变量绑定到它所依赖的值的一份copy上。</p>
-<p>2.会优先考虑把依赖数据move到变量中</p>
-<p>关于copy，当然就是实现 Rust的 <code>Copy Trait</code>咯。</p>
-<p>关于move，这里贴出官文的链接：<a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/expressions.html?highlight=move#moved-and-copied-types">https://doc.rust-lang.org/reference/expressions.html?highlight=move#moved-and-copied-types</a> ，这里面提出了能够move的四种情况。在这里我认为不能进行move的主要原因是第一种情况</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/reference/variables.html">Variables</a> which are not currently borrowed.</p>
-</blockquote>
-<p>这里摘出关键的不同点进行拆分</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(<span class="hljs-keyword">ref</span> l) = n.left &#123; <br>    queue.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*l);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>如果没有 <code>ref</code>，代码会以以下方式呈现，当rust的编译器进行checker时会发现我们的Node节点没有Copy的实现，同时在<code>Some(l) = n.left</code>这个<code>destructuring subpatterns</code>中发现l依赖的数据是<code>Box&lt;Node&gt;</code> 关于<code>Box</code>它相当于是一种共享型的能力，因此也并不满足<code>move</code>触发的条件。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(l) = n.left &#123; <br>    queue.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*l);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>但是有了上面的<code>ref</code>我们会改变 identifier pattern 的默认绑定方式，相当于采用了下面的做法</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">if</span> <span class="hljs-keyword">let</span> <span class="hljs-variable">Some</span>(l) = &amp;n.left &#123; <br>    queue.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*l);<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-<p>另外，我在这个学习的过程中还发现了一个有趣的问题，就是rust的自动类型推测系统与实际需要效果的差异。</p>
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">queue</span>: VecDeque&lt;&amp;Node&gt; = VecDeque::<span class="hljs-title function_ invoke__">from</span>([root]); <span class="hljs-comment">//这里是显示类型</span><br></code></pre></td></tr></table></figure>
-
-<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs rust"><span class="hljs-keyword">let</span> <span class="hljs-keyword">mut </span><span class="hljs-variable">childrens</span> = VecDeque::<span class="hljs-title function_ invoke__">new</span>(); <span class="hljs-comment">//这里会infer出 VecDeque&lt;&amp;Box&lt;Node&gt;&gt;,与实际需求略有差异</span><br>...<br>childrens.<span class="hljs-title function_ invoke__">push_back</span>(&amp;*n);<br>...<br></code></pre></td></tr></table></figure>
-
-<p>欢迎各位前来指点，这是我的SO Question: <a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/73824648/rust-why-compiler-infers-a-different-type-beyond-our-expection">https://stackoverflow.com/questions/73824648/rust-why-compiler-infers-a-different-type-beyond-our-expection</a></p>
-
+<img src="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-content/change-battery2.jpg" srcset="/img/loading.gif" lazyload style="zoom:25%;" />
                 
               </div>
             
@@ -425,7 +375,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/rust/" class="category-chain-item">rust</a>
+  <a href="/categories/%E6%97%A5%E5%B8%B8/" class="category-chain-item">日常</a>
   
   
 
@@ -440,7 +390,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/newbie/">#newbie</a>
+        <a href="/tags/%E5%8A%A8%E6%89%8B/">#动手</a>
       
     </div>
   
@@ -452,8 +402,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>awesome-rust-1(IdentifierPattern)</div>
-      <div>http://example.com/2022/09/23/awesome-rust-1/</div>
+      <div>更换我的手机电池</div>
+      <div>http://example.com/2022/11/14/change-mobile-battery/</div>
     </div>
     <div class="license-meta">
       
@@ -465,7 +415,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年9月23日</div>
+          <div>2022年11月14日</div>
         </div>
       
       
@@ -497,18 +447,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/12/float-numeric/" title="浮点数总结">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浮点数总结</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/21/rust-iter/" title="一文入门rust iterator">
-                        <span class="hidden-mobile">一文入门rust iterator</span>
+                      <a href="/2022/10/16/rust-move-borrow/" title="rust-move-borrow">
+                        <span class="hidden-mobile">rust-move-borrow</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

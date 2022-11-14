@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>更换我的手机电池</title>
+    <link href="/2022/11/14/change-mobile-battery/"/>
+    <url>/2022/11/14/change-mobile-battery/</url>
+    
+    <content type="html"><![CDATA[<h1 id="更换电池"><a href="#更换电池" class="headerlink" title="更换电池"></a>更换电池</h1><h4 id="事情起因"><a href="#事情起因" class="headerlink" title="事情起因"></a>事情起因</h4><p>因为我有剥手机壳的坏习惯，剥着剥着，哎呀，我就发现了手机后盖闭合不紧密，但是这可不是一个简单的问题，一般来说手机中没有突起部分手机后盖与机体的粘胶是可以保证非常久的密封性的，所以我下意识地就想到了电池鼓包的情况，当然我没有什么特别的依据是证明这件事。由于我的手机也已经用了4年之久了，所以我这次决定拆开它一探究竟。</p><h4 id="勇气是第一步"><a href="#勇气是第一步" class="headerlink" title="勇气是第一步"></a>勇气是第一步</h4><p>每一个人小时候或多或少都会拆掉几个玩具，看到啥新鲜东西就想往嘴里塞。不知道什么时候，我们失去了年幼时那份挑战未知的勇气，得到了更多的“真理”，我们就会越缺失对问题的质疑。幼时我们拆掉玩具根本不会担心它会不会坏，当然有时我们能将它重组，有时我们只能将它扔到垃圾桶里。我认为学习一点简答的拆卸是需要的，一年前我拆了笔记本后盖装了两个风扇，卸下cpu涂上硅脂，虽然是件微不足道的小事，但是很多人会担心自己完不成而不敢下手。有些人则是不愿意去学习相关的知识，花钱交给了相关人士。所以这次我依旧秉承我的旧风格：“能自己完成的小事绝对不交’智商税‘”。</p><h4 id="纪念"><a href="#纪念" class="headerlink" title="纪念"></a>纪念</h4><img src="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-content/change-battery1.jpg" style="zoom: 25%;" /><img src="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-content/change-battery3.jpg" style="zoom:25%;" /><img src="https://newblog-zgz.oss-cn-hangzhou.aliyuncs.com/post-content/change-battery2.jpg" style="zoom:25%;" />]]></content>
+    
+    
+    <categories>
+      
+      <category>日常</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>动手</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>rust-move-borrow</title>
     <link href="/2022/10/16/rust-move-borrow/"/>
     <url>/2022/10/16/rust-move-borrow/</url>
